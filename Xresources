@@ -1,13 +1,14 @@
-*font: xft:monospace:size=14
+emacs.font:Monospace 12
+URxvt*font: xft:Consolas:size=15
 *background: #1A3A41
 *foreground: #E6E1D8
-*color0: #3B436D
+*color0: #ffffff
 *color1: #9460A6 
 *color2: #65C459
 *color3: #83D391
 *color4: #49789B
 *color5: #E95CA1
-*color6: #95BBF1
+*color6: #4c7cc1
 *color7: #46464D
 *color8: #5BC1DC
 *color9: #6AC493
@@ -24,4 +25,4 @@ URxvt*scrollstyle:plain
 URxvt*scrollColor: #456e77
 !URxvt*troughColor: #1A3A41
 URxvt*troughColor: #658b93 
-URxvt*geometry: 55x15
+URxvt*geometry: 45x20
