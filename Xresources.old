@@ -1,0 +1,28 @@
+emacs.font:Monospace 12
+URxvt*font: xft:Consolas:size=15
+*background: #1A3A41
+*foreground: #E6E1D8
+*color0: #ffffff
+*color1: #9460A6 
+*color2: #65C459
+*color3: #83D391
+*color4: #49789B
+*color5: #E95CA1
+*color6: #4c7cc1
+*color7: #46464D
+*color8: #5BC1DC
+*color9: #6AC493
+*color10: #BF72CE
+*color11: #83C443
+*color12: #738BA6
+*color13: #B393DC
+*color14: #619999
+*color15: #E6E1D8
+URxvt*scrollBar:true
+URxvt*scrollBar_right:true
+URxvt*scrollstyle:plain
+!URxvt*scrollColor: #E6E1D8
+URxvt*scrollColor: #456e77
+!URxvt*troughColor: #1A3A41
+URxvt*troughColor: #658b93 
+URxvt*geometry: 45x20

@@ -14,7 +14,8 @@ set shiftwidth=4	" Number of auto-indent spaces
 set smartindent	" Enable smart-indent
 set smarttab	" Enable smart-tabs
 set softtabstop=4	" Number of spaces per Tab
- 
+set noerrorbells
+
 " Advanced
 set ruler	" Show row and column ruler information
  
@@ -24,6 +25,26 @@ set backspace=indent,eol,start	" Backspace behaviour
 set ai
 set si
 set wrap
+
+syntax on
+set linebreak
+set textwidth=0
+set wrapmargin=0
+"set spell
+set formatoptions+=l
+nnoremap j gj
+nnoremap k gk
+
+"--------PLUGINS
+
+call plug#begin()
+
+Plug 'junegunn/goyo.vim'
+
+call plug#end()
+
+"--------ENDPLUGINS
+
 
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
@@ -38,7 +59,3 @@ func! WordProcessorMode()
 endfu
 
 com! WP call WordProcessorMode()
-
-syntax enable
-
-
