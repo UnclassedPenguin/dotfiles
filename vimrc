@@ -1,4 +1,5 @@
 "-------------General
+"--------------------
 let mapleader = " " "map leader to space
 
 syntax on
@@ -10,10 +11,10 @@ set ignorecase	" Always case-insensitive
 set incsearch	" Searches for strings incrementally
 set autoindent	" Auto-indent new lines
 set expandtab	" Use spaces instead of tabs
-set shiftwidth=4	" Number of auto-indent spaces
+set shiftwidth=2	" Number of auto-indent spaces
 set smartindent	" Enable smart-indent
 set smarttab	" Enable smart-tabs
-set softtabstop=4	" Number of spaces per Tab
+set softtabstop=2	" Number of spaces per Tab
 set noerrorbells
 set ruler	" Show row and column ruler information
 set undolevels=1000	" Number of undo levels
@@ -28,9 +29,17 @@ set formatoptions+=l
 set splitbelow " Split screen to bottom
 set splitright " Split screen to right
 
+filetype plugin indent on
+
+"--------------------
+"----------EndGeneral
 
 "---------Keybindings
+"--------------------
 " MAKE SURE NO TRAILING SPACES
+
+" Remap esc
+inoremap jk <ESC>
 
 " Remap for goyo, lets you go by visual line instead of by actual line
 nnoremap j gj
@@ -53,11 +62,21 @@ map <leader>wp :WP<CR>
 
 " Open Nerd Tree
 map <leader>nt :NERDTree<CR>
+
+" Split horizontally
+map <leader>bh :split<CR>
+
+" Split vertically
+map <leader>bv :vsplit<CR>
+
+" Autoindent
+map <leader>ai :Autoformat<CR>
+"-----------------------
 "---------endKeybindings
 
 
 "--------PLUGINS
-
+"---------------
 call plug#begin()
 
 " Writing mode (:Goyo)
@@ -69,18 +88,13 @@ Plug 'preservim/nerdcommenter'
 " File explorer (<leader> nt)
 Plug 'preservim/nerdtree'
 
+" Tabular for tabbing things...
+Plug 'godlygeek/tabular'
+
+" Autoformat
+Plug 'Chiel92/vim-autoformat'
+
 call plug#end()
 
+"------------------
 "--------ENDPLUGINS
-
-
-" Word Processor Mode
-
-func! WordProcessorMode()
-    setlocal textwidth=80
-    setlocal smartindent
-    setlocal spell spelllang=en_us
-    setlocal noexpandtab
-endfu
-
-com! WP call WordProcessorMode()
