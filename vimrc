@@ -50,6 +50,9 @@ map <leader>ss :setlocal spell!<cr>
 
 " Turns on WordProcessor mode (See below)
 map <leader>wp :WP<CR>
+
+" Open Nerd Tree
+map <leader>nt :NERDTree<CR>
 "---------endKeybindings
 
 
@@ -57,7 +60,14 @@ map <leader>wp :WP<CR>
 
 call plug#begin()
 
+" Writing mode (:Goyo)
 Plug 'junegunn/goyo.vim'
+
+" Comment selected text (<leader> c space)
+Plug 'preservim/nerdcommenter'
+
+" File explorer (<leader> nt)
+Plug 'preservim/nerdtree'
 
 call plug#end()
 
