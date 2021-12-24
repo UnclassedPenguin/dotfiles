@@ -61,7 +61,6 @@ map <leader>ss :setlocal spell!<cr>
 map <leader>nt :NERDTree<CR>
 
 "------Buffer CMDs
-
 " List Buffer
 map <leader>bl :buffers<CR>
 
@@ -76,7 +75,6 @@ map <leader>bh :split<CR>
 
 " Split vertically
 map <leader>bv :vsplit<CR>
-
 "------EndBuffer CMDs
 
 " Autoformat
@@ -93,6 +91,7 @@ map <leader>mt :InstantMarkdownStop<CR>
 
 "--------PLUGINS
 "---------------
+"I use vim-plug to manage plugins.
 call plug#begin()
 
 " Writing mode (:Goyo)
