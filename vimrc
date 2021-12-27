@@ -124,6 +124,9 @@ map <leader>ms :InstantMarkdownPreview<CR>
 " Markdown stop webserver
 map <leader>mt :InstantMarkdownStop<CR>
 
+" Writing mode
+map <leader>wp :WP<CR>
+
 "--------------------------------------"
 "--------ENDKEYBINDINGS----------------"
 "--------------------------------------"
@@ -180,16 +183,35 @@ call plug#end()
 "--------------------------------------"
 "--------ENDPLUGINS--------------------"
 "--------------------------------------"
-"
+
+
+"--------------------------------------"
+"--------FUNCTIONS---------------------"
+"--------------------------------------"
+
+func! WordProcessorMode()
+    :Goyo
+    setlocal smartindent
+    setlocal spell spelllang=en_us
+    setlocal noexpandtab
+endfu
+
+com! WP call WordProcessorMode()
+
+"--------------------------------------"
+"--------ENDFUNCTIONS------------------"
+"--------------------------------------"
+
+
 " Basic Status line
 set laststatus=2
 set statusline=
-set statusline +=%1*\ %n\ %*            " buffer number
-set statusline +=%5*%{&ff}%*            " file format
-set statusline +=%3*%y%*                " file type
-set statusline +=%4*\ %<%F%*            " full path
-set statusline +=%2*%m%*                " modified flag
-set statusline +=%1*%=%5l%*             " current line
-set statusline +=%2*/%L%*               " total lines
-set statusline +=%1*%4v\ %*             " virtual column number
-set statusline +=%2*0x%04B\ %*          " character under cursor
+set statusline +=%1*\ %n\ %*            " Buffer number
+set statusline +=%5*%{&ff}%*            " File format
+set statusline +=%3*%y%*                " File type
+set statusline +=%4*\ %<%F%*            " Full path
+set statusline +=%2*%m%*                " Modified flag
+set statusline +=%1*%=%5l%*             " Current line
+set statusline +=%2*/%L%*               " Total lines
+set statusline +=%1*%4v\ %*             " Virtual column number
+set statusline +=%2*0x%04B\ %*          " Character under cursor
