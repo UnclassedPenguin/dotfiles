@@ -133,7 +133,12 @@ map <leader>mt :InstantMarkdownStop<CR>
 "--------PLUGINS-----------------------"
 "--------------------------------------"
 
-"I use vim-plug to manage plugins.
+" I use vim-plug to manage plugins.
+" Install using:
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" Then open vim and run :PlugInstall
+
 call plug#begin()
 
 " Writing mode (:Goyo)
@@ -179,12 +184,12 @@ call plug#end()
 " Basic Status line
 set laststatus=2
 set statusline=
-set statusline +=%1*\ %n\ %*            "buffer number
-set statusline +=%5*%{&ff}%*            "file format
-set statusline +=%3*%y%*                "file type
-set statusline +=%4*\ %<%F%*            "full path
-set statusline +=%2*%m%*                "modified flag
-set statusline +=%1*%=%5l%*             "current line
-set statusline +=%2*/%L%*               "total lines
-set statusline +=%1*%4v\ %*             "virtual column number
-set statusline +=%2*0x%04B\ %*          "character under cursor
+set statusline +=%1*\ %n\ %*            " buffer number
+set statusline +=%5*%{&ff}%*            " file format
+set statusline +=%3*%y%*                " file type
+set statusline +=%4*\ %<%F%*            " full path
+set statusline +=%2*%m%*                " modified flag
+set statusline +=%1*%=%5l%*             " current line
+set statusline +=%2*/%L%*               " total lines
+set statusline +=%1*%4v\ %*             " virtual column number
+set statusline +=%2*0x%04B\ %*          " character under cursor
