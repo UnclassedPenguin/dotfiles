@@ -1,38 +1,58 @@
-"-------------General
-"--------------------
-let mapleader = " " "map leader to space
+"--------------------------------------"
+"-------------General------------------"
+"--------------------------------------"
 
-syntax on
-set showbreak=+++ 	" Wrap-broken line prefix
-set showmatch	" Highlight matching brace
-set hlsearch	" Highlight all search results
-set smartcase	" Enable smart-case search
-set ignorecase	" Always case-insensitive
-set incsearch	" Searches for strings incrementally
-set autoindent	" Auto-indent new lines
-set expandtab	" Use spaces instead of tabs
-set shiftwidth=2	" Number of auto-indent spaces
-set smartindent	" Enable smart-indent
-set smarttab	" Enable smart-tabs
-set softtabstop=2	" Number of spaces per Tab
-set noerrorbells
-set ruler	" Show row and column ruler information
-set undolevels=1000	" Number of undo levels
+let mapleader = " "             " Map leader to space
+
+syntax on                       " Turn syntax on
+set nocompatible                " Disable compatible mode with vi
+set showbreak=+++ 	        " Wrap-broken line prefix
+set showmatch	                " Highlight matching brace
+set hlsearch	                " highlight all search results
+set smartcase	                " enable smart-case search
+set ignorecase	                " Always case-insensitive
+set incsearch	                " Searches for strings incrementally
+set autoindent	                " Auto-indent new lines
+set expandtab	                " Use spaces instead of tabs
+set shiftwidth=2	        " Number of auto-indent spaces
+set smartindent	                " Enable smart-indent
+set smarttab	                " Enable smart-tabs
+set softtabstop=2	        " Number of spaces per Tab
+set noerrorbells                " Turn off error bells
+set ruler	                " Show row and column ruler information
+set undolevels=1000	        " Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
-set wrap
+set wrap                        " Turn on text wrap
 set linebreak
 set textwidth=0
 set wrapmargin=0
 set formatoptions+=l
-set splitbelow " Split screen to bottom
-set splitright " Split screen to right
+set splitbelow                  " Split screen to bottom
+set splitright                  " Split screen to right
 
-"--------------------
-"----------EndGeneral
+"--------------------------------------"
+"----------ENDGENERAL------------------"
+"--------------------------------------"
 
 
-"---------Keybindings
-"--------------------
+"--------------------------------------"
+"----------ADVANCED--------------------"
+"--------------------------------------"
+
+" Sets Airline Theme
+" let g:airline_theme='bubblegum'
+
+" Disable autostart for markdown viewer
+let g:instant_markdown_autostart = 0
+
+"--------------------------------------"
+"----------ENDADVANCED-----------------"
+"--------------------------------------"
+
+
+"--------------------------------------"
+"---------KEYBINDINGS------------------"
+"--------------------------------------"
 " MAKE SURE NO TRAILING SPACES
 
 " Remap esc
@@ -60,37 +80,59 @@ map <leader>ss :setlocal spell!<cr>
 " Open Nerd Tree
 map <leader>nt :NERDTree<CR>
 
-"------Buffer CMDs
+"----------------------"
+"------Buffer CMDs-----"
+"----------------------"
 " List Buffer
 map <leader>bl :buffers<CR>
 
 " Next Buffer
 map <leader>bn :bn<CR>
 
-" Close current buffer
-map <leader>bc :bd<CR>
+" Delete current buffer
+map <leader>bd :bd<CR>
 
 " Split horizontally
 map <leader>bh :split<CR>
 
 " Split vertically
 map <leader>bv :vsplit<CR>
-"------EndBuffer CMDs
+"----------------------"
+"------EndBuffer CMDs--"
+"----------------------"
+
+"----------------------"
+"------Tab CMDs--------"
+"----------------------"
+" Create New Tab ([t]ab [c]reate)
+map <leader>tc :tab new<CR>
+
+" Next Tab ([t]ab [n]ext)
+map <leader>tn :tabn<CR>
+
+" Previous Tab ([t]ab [p]revious)
+map <leader>tp :tabp<CR>
+"----------------------"
+"------EndTab CMDs-----"
+"----------------------"
 
 " Autoformat
-map <leader>ai :Autoformat<CR>
+map <leader>af :Autoformat<CR>
 
 " Markdown start webserver
 map <leader>ms :InstantMarkdownPreview<CR>
 " Markdown stop webserver
 map <leader>mt :InstantMarkdownStop<CR>
 
-"-----------------------
-"---------endKeybindings
+"--------------------------------------"
+"--------ENDKEYBINDINGS----------------"
+"--------------------------------------"
 
 
-"--------PLUGINS
-"---------------
+"--------------------------------------"
+"--------PLUGINS-----------------------"
+"--------------------------------------"
+
 "I use vim-plug to manage plugins.
 call plug#begin()
 
@@ -121,17 +163,19 @@ Plug 'Chiel92/vim-autoformat'
 " make sure to also: npm uninstall instant-markdown-d
 Plug 'instant-markdown/vim-instant-markdown'
 
+" Match html tags
+Plug 'Valloric/matchtagalways'
+
+" Vim terminal
+" Dont reqlly like this one...
+" Plug 'tc50cal/vim-terminal'
+
 call plug#end()
 
-"------------------
-"--------ENDPLUGINS
-
-" Sets Airline Theme
-" let g:airline_theme='bubblegum'
-
-" Disable autostart for markdown viewer
-let g:instant_markdown_autostart = 0
-
+"--------------------------------------"
+"--------ENDPLUGINS--------------------"
+"--------------------------------------"
+"
 " Basic Status line
 set laststatus=2
 set statusline=
