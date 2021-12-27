@@ -2,26 +2,26 @@
 "-------------General------------------"
 "--------------------------------------"
 
+set nocompatible                " Disable compatible mode with vi
 let mapleader = " "             " Map leader to space
 
 syntax on                       " Turn syntax on
-set nocompatible                " Disable compatible mode with vi
-set showbreak=+++ 	        " Wrap-broken line prefix
-set showmatch	                " Highlight matching brace
-set hlsearch	                " highlight all search results
-set smartcase	                " enable smart-case search
+set showbreak=+++               " Wrap-broken line prefix
+set showmatch                   " Highlight matching brace
+set hlsearch                    " highlight all search results
+set smartcase                   " enable smart-case search
 set ignorecase	                " Always case-insensitive
-set incsearch	                " Searches for strings incrementally
-set autoindent	                " Auto-indent new lines
-set expandtab	                " Use spaces instead of tabs
-set shiftwidth=2	        " Number of auto-indent spaces
+set incsearch                   " Searches for strings incrementally
+set autoindent                  " Auto-indent new lines
+set expandtab                   " Use spaces instead of tabs
+set shiftwidth=2                " Number of auto-indent spaces
 set smartindent	                " Enable smart-indent
-set smarttab	                " Enable smart-tabs
-set softtabstop=2	        " Number of spaces per Tab
+set smarttab                    " Enable smart-tabs
+set softtabstop=2               " Number of spaces per Tab
 set noerrorbells                " Turn off error bells
-set ruler	                " Show row and column ruler information
-set undolevels=1000	        " Number of undo levels
-set backspace=indent,eol,start	" Backspace behaviour
+set ruler                       " Show row and column ruler information
+set undolevels=1000             " Number of undo levels
+set backspace=indent,eol,start  " Backspace behaviour
 set wrap                        " Turn on text wrap
 set linebreak
 set textwidth=0
@@ -61,6 +61,10 @@ inoremap jk <ESC>
 " Remap for goyo, lets you go by visual line instead of by actual line
 nnoremap j gj
 nnoremap k gk
+
+" Switch window (ie after opening :term)
+tnoremap <leader>bw <C-W><C-W>
+nnoremap <leader>bw <C-W><C-W>
 
 " Remaps for moving between splits
 nnoremap <C-J> <C-W><C-J>
@@ -115,6 +119,9 @@ map <leader>tp :tabp<CR>
 "----------------------"
 "------EndTab CMDs-----"
 "----------------------"
+
+" Open terminal
+map <leader>tt :term<CR>
 
 " Autoformat
 map <leader>af :Autoformat<CR>
@@ -173,10 +180,6 @@ Plug 'instant-markdown/vim-instant-markdown'
 
 " Match html tags
 Plug 'Valloric/matchtagalways'
-
-" Vim terminal
-" Dont reqlly like this one...
-" Plug 'tc50cal/vim-terminal'
 
 call plug#end()
 
