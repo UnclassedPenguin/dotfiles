@@ -23,10 +23,16 @@ function afmagic_dashes {
   fi
 }
 
-
+#1st promt:
+#
 #PROMPT="%{$FG[007]%}╭─%n@%m %{$reset_color%}%{$FG[012]%}in %~ %{$reset_color%}${git_branch}
 #%{$FG[007]%}╰\$ %{$reset_color%}"
-PROMPT="%{$FG[007]%}\${(l.\$(afmagic_dashes)..-.)}%{$reset_color%}%{$FG[007]%}╭─%n@%m %{$reset_color%}%{$FG[012]%}%~ %{$reset_color%}${git_branch}
+#2nd one
+#
+#PROMPT="%{$FG[007]%}\${(l.\$(afmagic_dashes)..-.)}%{$reset_color%}%{$FG[007]%}╭─%n@%m %{$reset_color%}%{$FG[012]%}%~ %{$reset_color%}${git_branch}
+#%{$FG[007]%}╰\$ %{$reset_color%}"
+
+PROMPT="%{$FG[007]%}\${(l.\$(afmagic_dashes)..-.)}%{$reset_color%}%{$FG[007]%}╭%n@%m %{$reset_color%}%{$FG[012]%}%~ %{$reset_color%}${git_branch}
 %{$FG[007]%}╰\$ %{$reset_color%}"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$FG[012]%}on "
