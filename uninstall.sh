@@ -2,7 +2,7 @@
 
 dir=~/git/dotfiles
 budir=~/git/dotfiles_old
-files="vimrc"
+files="vimrc Xresources zshrc"
 
 echo "Moving to backup directory: $budir"
 cd $budir
