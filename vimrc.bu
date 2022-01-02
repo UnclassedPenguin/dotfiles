@@ -4,9 +4,7 @@
 
 set nocompatible                " Disable compatible mode with vi
 let mapleader = " "             " Map leader to space
-let maplocalleader = " "
 
-filetype on
 syntax on                       " Turn syntax on
 set showbreak=+++               " Wrap-broken line prefix
 set showmatch                   " Highlight matching brace
@@ -15,9 +13,9 @@ set smartcase                   " enable smart-case search
 set ignorecase	                " Always case-insensitive
 set incsearch                   " Searches for strings incrementally
 set autoindent                  " Auto-indent new lines
-set smartindent	                " Enable smart-indent
 set expandtab                   " Use spaces instead of tabs
 set shiftwidth=2                " Number of auto-indent spaces
+set smartindent	                " Enable smart-indent
 set smarttab                    " Enable smart-tabs
 set softtabstop=2               " Number of spaces per Tab
 set noerrorbells                " Turn off error bells
@@ -182,9 +180,6 @@ Plug 'instant-markdown/vim-instant-markdown'
 
 " Match html tags
 Plug 'Valloric/matchtagalways'
-
-" Todo plugin
-Plug 'laib3/vim-todo-plugin'
 
 call plug#end()
 
