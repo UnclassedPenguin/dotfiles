@@ -2,7 +2,8 @@
 
 dir=~/git/dotfiles
 budir=~/git/dotfiles_old
-files="vimrc Xresources zshrc"
+files="i3status.conf vimrc Xresources zshrc"
+i3conf=i3config
 
 echo "Moving to backup directory: $budir"
 cd $budir
@@ -16,6 +17,13 @@ for file in $files; do
   mv $file ~/.$file
   echo "...done"
 done
+
+echo "Deleting $i3conf symlink"
+rm ~/.config/i3/config
+echo "...done"
+echo "Moving $i3conf to ~/.config/i3/config"
+mv $i3conf ~/.config/i3/config
+echo "...done"
 
 echo "Deleting $budir"
 cd ..
