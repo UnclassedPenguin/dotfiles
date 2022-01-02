@@ -2,7 +2,10 @@
 - [x] Write a script to automatically write symlinks 
 - [x] vimrc 
 - [x] zshrc 
-- [ ] Xresources
-- [ ] i3-status 
-- [ ] i3-config
-- [ ]  
+- [x] Xresources
+- [x] i3-status 
+- [x] i3-config
+
+# Well that is nice to have done... :)
+
+@ Anything else?
