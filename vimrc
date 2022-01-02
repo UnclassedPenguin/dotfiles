@@ -4,7 +4,7 @@
 
 set nocompatible                " Disable compatible mode with vi
 let mapleader = " "             " Map leader to space
-let maplocalleader = " "
+let maplocalleader = "\\"
 
 filetype on
 syntax on                       " Turn syntax on

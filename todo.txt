@@ -1,0 +1,9 @@
+@ Things todo for dotfiles
+- [ ] Write a script to automatically write symlinks 
+- [ ] vimrc 
+- [ ] bashrc 
+- [ ] zshrc 
+- [ ] Xresources
+- [ ] i3-status 
+- [ ] i3-config
+- [ ]  
