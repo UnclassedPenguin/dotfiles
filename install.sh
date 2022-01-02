@@ -2,7 +2,7 @@
 
 dir=~/git/dotfiles
 budir=~/git/dotfiles_old
-files="bashrc vimrc zshrc"
+files="vimrc"
 
 echo "Creating $budir for backup of existing files in ~/git/"
 mkdir -p $budir
@@ -14,7 +14,7 @@ echo "...done"
 
 for file in $files; do
   echo "Moving $file to $budir"
-  mv ~/.$file $budir
+  mv ~/.$file $budir/$file
   echo "Creating symlink to $file in homedir"
   ln -s $dir/$file ~/.$file
 done
