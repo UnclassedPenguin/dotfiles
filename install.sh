@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#---------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------
 # Dotfiles installer :)
 #
@@ -7,6 +7,7 @@
 # Site: https://unclassed.ca
 # Github: https://github.com/UnclassedPenguin
 #
+#---------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------
 
 
@@ -77,7 +78,9 @@ else
 fi
 
 if [ -d "$HOME/.oh-my-zsh/custom/themes" ] ; then
+  echo "Setting Zsh Theme..."
   ln -s $dir/tyler.zsh-theme $HOME/.oh-my-zsh/custom/themes/tyler.zsh-theme 
+  echo "...done"
 fi
 
 #---------------------------------------------------------------------------------------------
@@ -95,7 +98,7 @@ echo "Creating $budir for backup of existing files"
 mkdir -p $budir
 echo "...done"
 
-# Change to backup directory, to copy files here
+# Change to dotfile directory
 
 echo "Changing to $dir directory"
 cd $dir
