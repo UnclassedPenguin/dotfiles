@@ -18,11 +18,13 @@ basedir=~/git/                                  # Where you want to put dotfiles
 dir=~/git/dotfiles                              # Your dotfiles directory
 budir=~/git/dotfiles_old                        # dotfiles_old directory
 
+echo "Checking for i3..."
 if [ -f "$HOME/.i3status.conf" ] && [ -f "$HOME/.config/i3/config" ] ; then
   echo "i3 Detected..."
   files="i3status.conf vimrc Xresources zshrc"    # Files to symlink
   i3conf=i3config                                 # ~/.config/i3/config name in backup/dotfiles
 else
+  echo "i3 Not Detected..."
   files="vimrc Xresources zshrc"                  # Files to symlink
 fi
 
@@ -35,9 +37,57 @@ fi
 # Program start
 #---------------------------------------------------------------------------------------------
 
+
+#---------------------------------------------------------------------------------------------
+# ZSH section 
+#---------------------------------------------------------------------------------------------
+
+# Next section checks for zsh bin and if not there installs it
+
+echo "Looking for Zsh..."
+
+if [ ! -f "/bin/zsh" ] ; then
+  # Install zsh
+  echo "Zsh Not Found, installing..."
+  echo "Updating resources..."
+  sudo apt update
+  echo "Update finished..."
+  echo "Installing Zsh..."
+  sudo apt install zsh -y
+  echo "Zsh Install Finished..."
+  if [ -f "/bin/zsh" ] ; then
+    echo "Changing shell to Zsh"
+    chsh -s /bin/zsh
+    echo "...done"
+  fi
+else
+  echo "Zsh Found. Continuing..."
+fi
+
+# Next sections checks for oh my zsh and installs it if not there
+
+echo "Looking for Oh My Zsh..."
+
+if [ ! -d "$HOME/.oh-my-zsh" ] ; then
+  echo "Oh My Zsh Not Found, installing..."
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  echo "...done installing zsh"
+else
+  echo "Oh My Zsh found, continuing..."
+fi
+
+#---------------------------------------------------------------------------------------------
+# End ZSH section
+#---------------------------------------------------------------------------------------------
+
+
+#---------------------------------------------------------------------------------------------
+# Dotfiles section
+#---------------------------------------------------------------------------------------------
+
 # Create backup directory
 
-echo "Creating $budir for backup of existing files in $basedir"
+echo "Creating $budir for backup of existing files"
 mkdir -p $budir
 echo "...done"
 
@@ -52,9 +102,11 @@ echo "...done"
 # This section takes care of any dotfiles located in your Homedir
 
 for file in $files; do
-  echo "Backing up $file to $budir"
-  mv ~/.$file $budir/$file
-  echo "...done"
+  if [ -f "$HOME/.$file" ] ; then
+    echo "Backing up $file to $budir"
+    mv ~/.$file $budir/$file
+    echo "...done"
+  fi
   echo "Creating symlink to $file in ~"
   ln -s $dir/$file ~/.$file
   echo "...done"
@@ -77,6 +129,10 @@ if [ -f "$HOME/.i3status.conf" ] && [ -f "$HOME/.config/i3/config" ] ; then
   ln -s $dir/$i3conf ~/.config/i3/config
   echo "...done"
 fi
+
+#---------------------------------------------------------------------------------------------
+# End Dotfiles section
+#---------------------------------------------------------------------------------------------
 
 #---------------------------------------------------------------------------------------------
 # Program End
