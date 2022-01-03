@@ -77,7 +77,7 @@ else
 fi
 
 if [ -d "$HOME/.oh-my-zsh/custom/themes" ] ; then
-  ln -s tyler.zsh-theme $HOME/.oh-my-zsh/custom/themes/tyler.zsh-theme 
+  ln -s $dir/tyler.zsh-theme $HOME/.oh-my-zsh/custom/themes/tyler.zsh-theme 
 fi
 
 #---------------------------------------------------------------------------------------------
@@ -116,6 +116,16 @@ for file in $files; do
   echo "...done"
 done
 
+# Install vim-plug if you don't have it
+
+echo "Checking for vim-plug..."
+if [ ! -f "$HOME/.vim/autoload/plug.vim" ] ; then
+  echo "Vim-plug not found, installing..."
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+else
+  echo "Vim-plug found, continuing..."
+fi
 
 #---------------------------------------------------------------------------------------------
 # Program ends here if you don't have i3.
