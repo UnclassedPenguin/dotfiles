@@ -76,6 +76,10 @@ else
   echo "Oh My Zsh found, continuing..."
 fi
 
+if [ -d "$HOME/.oh-my-zsh/custom/themes" ] ; then
+  ln -s tyler.zsh-theme $HOME/.oh-my-zsh/custom/themes/tyler.zsh-theme 
+fi
+
 #---------------------------------------------------------------------------------------------
 # End ZSH section
 #---------------------------------------------------------------------------------------------
