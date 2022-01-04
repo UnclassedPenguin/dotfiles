@@ -51,10 +51,10 @@ if [ ! -f "/bin/zsh" ] ; then
   # Install zsh
   echo "Zsh Not Found, installing..."
   echo "Updating resources..."
-  sudo apt update
+  sudo apt update || {echo 'apt update failed'; exit 1;}
   echo "Update finished..."
   echo "Installing Zsh..."
-  sudo apt install zsh -y
+  sudo apt install zsh -y || {echo 'apt install zsh failed'; exit 1;}
   echo "Zsh Install Finished..."
   if [ -f "/bin/zsh" ] ; then
     echo "Changing shell to Zsh"
