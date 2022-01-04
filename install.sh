@@ -71,7 +71,7 @@ echo "Looking for Oh My Zsh..."
 
 if [ ! -d "$HOME/.oh-my-zsh" ] ; then
   echo "Oh My Zsh Not Found, installing..."
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended || { echo 'Getting Oh My Zsh failed...' ; exit 1; }
   echo "...done installing zsh"
 else
   echo "Oh My Zsh found, continuing..."
