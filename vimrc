@@ -47,6 +47,11 @@ set splitright                  " Split screen to right
 " Disable autostart for markdown viewer
 let g:instant_markdown_autostart = 0
 
+" Remember where you are in a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
 "--------------------------------------"
 "----------ENDADVANCED-----------------"
 "--------------------------------------"
@@ -136,6 +141,17 @@ map <leader>mt :InstantMarkdownStop<CR>
 " Writing mode
 map <leader>wp :WP<CR>
 
+" Python Folding
+map <leader>ff :set foldmethod=indent<CR>
+" Open single fold recursively
+map <leader>fo zO
+" Open all folds
+map <leader>fa zR
+" Close single fold
+map <leader>fc zc
+" Close all folds
+map <leader>fm zM
+
 "--------------------------------------"
 "--------ENDKEYBINDINGS----------------"
 "--------------------------------------"
@@ -185,6 +201,10 @@ Plug 'Valloric/matchtagalways'
 
 " Todo plugin
 Plug 'laib3/vim-todo-plugin'
+
+
+" Python folding
+" Plug 'tmhedberg/SimpylFold'
 
 call plug#end()
 

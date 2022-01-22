@@ -1,4 +1,4 @@
-urxvt.font:     xft:monospace:pixelsize=15
+urxvt.font:     xft:monospace:pixelsize=14
 urxvt.letterSpace:-2
 urxvt.scrollBar:False
 

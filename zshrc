@@ -1,3 +1,19 @@
+
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+# UnclassedPenguin .zshrc 2022
+#-------------------------------------------------------------------------------
+# Author: Tyler(UnclassedPenguin)
+# Website: https://unclassed.ca
+# Github: https://github.com/unclassedpenguin
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+
+
+#-------------------------------------------------------------------------------
+# Custom variables
+#-------------------------------------------------------------------------------
+
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH:/home/user/gems/bin:$PATH:/home/user/.gem/ruby/2.7.0:$PATH
 export PATH=$HOME/.local/bin:$PATH
@@ -12,6 +28,18 @@ export PATH=$PATH:~/.npm-global/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/user/.oh-my-zsh"
+
+# Variables for virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS=' -p /usr/bin/python3 '
+export PROJECT_HOME=$HOME/programming/django
+source /usr/local/bin/virtualenvwrapper.sh
+
+
+#-------------------------------------------------------------------------------
+# End Custom variables
+#-------------------------------------------------------------------------------
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
