@@ -15,13 +15,13 @@
 #-------------------------------------------------------------------------------
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH:/home/user/gems/bin:$PATH:/home/user/.gem/ruby/2.7.0:$PATH
+export PATH=$HOME/.bin:/usr/local/bin:$PATH:/home/user/.gems/bin:$PATH:/home/user/.gem/ruby/2.7.0:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$PATH:/usr/local/go/bin
 
 # Install Ruby Gems to ~/gems
-export GEM_HOME="$HOME/gems"
-export PATH="$HOME/gems/bin:$PATH"
+export GEM_HOME="$HOME/.gems"
+export PATH="$HOME/.gems/bin:$PATH"
 
 export NPM_CONFIG_PREFIX=~/.npm-global
 export PATH=$PATH:~/.npm-global/bin
