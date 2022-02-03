@@ -1,3 +1,15 @@
+!-------------------------------------------------------------------------------
+!-------------------------------------------------------------------------------
+!
+! Tyler(UnclassedPenguin) .Xresources 2022
+! 
+! Author: Tyler(UnclassedPenguin)
+!    URL: https://unclassed.ca
+! GitHub: https://github.com/UnclassedPenguin
+!
+!-------------------------------------------------------------------------------
+!-------------------------------------------------------------------------------
+
 urxvt.font:     xft:monospace:pixelsize=14
 urxvt.letterSpace:-2
 urxvt.scrollBar:False

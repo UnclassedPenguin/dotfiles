@@ -1,19 +1,27 @@
-# This is my custom theme:
-# Author: UnclassedPenguin
-# URL: https://unclassed.ca
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+#
+# Tyler(UnclassedPenguin) ZSH Theme 2022
+#
+# Author: Tyler(UnclassedPenguin)
+#    URL: https://unclassed.ca
 # GitHub: https://github.com/UnclassedPenguin
 #
-# That is a mashup of two other themes:
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+#
+# Credit to:
 #
 # af-magic.zsh-theme (For the rows across the terminal)
 # Author: Andy Fleming
-# URL: http://andyfleming.com/
+#    URL: http://andyfleming.com/
 #
 # and
 #
 # strug.zsh-theme
 #
-# All credit goes to those two, I just mashed it together and changed some colors. 
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 # terminal coloring
 export CLICOLOR=1
