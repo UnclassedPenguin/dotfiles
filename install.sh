@@ -14,30 +14,83 @@
 
 
 #-------------------------------------------------------------------------------
+# Dependencies 
+#-------------------------------------------------------------------------------
+# Checks for dependencies. 
+# The only one atm is curl
+#-------------------------------------------------------------------------------
+
+SCRIPTNAME="${0##*/}"
+
+warn() {
+    printf >&2 "$SCRIPTNAME: $*\n"
+}
+
+iscmd() {
+    command -v >&- "$@"
+}
+
+checkdeps() {
+    local -i not_found
+    for cmd; do
+        iscmd "$cmd" || { 
+            warn $"$cmd is not found"
+            let not_found++
+        }
+    done
+    (( not_found == 0 )) || {
+        warn $"Install dependencies listed above to use $SCRIPTNAME"
+        exit 1
+    }
+}
+
+# If you need to check more, just add here i.e.:
+# checkdeps curl cmd cmd1 cmd2
+checkdeps curl
+
+#-------------------------------------------------------------------------------
+# End Dependencies 
+#-------------------------------------------------------------------------------
+# Thanks to Dmitry Alexandrov
+# For this from: 
+# https://stackoverflow.com/questions/20815433/
+#       how-can-i-check-in-a-bash-script-if-some-software-is-installed-or-not
+#-------------------------------------------------------------------------------
+
+
+#-------------------------------------------------------------------------------
 # Variables
 #-------------------------------------------------------------------------------
 
-basedir=~/git/                                  # Where you want to put dotfiles_old/
-dir=~/git/dotfiles                              # Your dotfiles directory
-budir=~/git/dotfiles_old                        # dotfiles_old directory
+# Where you want to put dotfiles_old/
+basedir=~/git/
+
+# Your dotfiles directory
+dir=~/git/dotfiles
+
+# dotfiles_old directory
+budir=~/git/dotfiles_old
 
 echo "Checking for i3..."
 if [ -f "$HOME/.i3status.conf" ] && [ -f "$HOME/.config/i3/config" ] ; then
   echo "i3 Detected..."
-  files="i3status.conf vimrc Xresources zshrc"    # Files to symlink
-  i3conf=i3config                                 # ~/.config/i3/config name in backup/dotfiles
+
+  # Files to symlink if i3 detected
+  files="i3status.conf vimrc xresources zshrc"
+
+  # ~/.config/i3/config name in backup/dotfiles
+  i3conf=i3config
+
 else
   echo "i3 Not Detected..."
-  files="vimrc Xresources zshrc"                  # Files to symlink
+
+  # Files to symlink if no i3 detected
+  files="vimrc Xresources zshrc"
+
 fi
 
 #-------------------------------------------------------------------------------
 # End Variables
-#-------------------------------------------------------------------------------
-
-
-#-------------------------------------------------------------------------------
-# Program start
 #-------------------------------------------------------------------------------
 
 
@@ -53,10 +106,10 @@ if [ ! -f "/bin/zsh" ] ; then
   # Install zsh
   echo "Zsh Not Found, installing..."
   echo "Updating resources..."
-  sudo apt update || { echo 'apt update failed' ; exit 1; }
+  sudo apt update || { warn $'apt update failed' ; exit 1; }
   echo "Update finished..."
   echo "Installing Zsh..."
-  sudo apt install zsh -y || { echo 'apt install zsh failed' ; exit 1; }
+  sudo apt install zsh -y || { warn $'apt install zsh failed' ; exit 1; }
   echo "Zsh Install Finished..."
   if [ -f "/bin/zsh" ] ; then
     echo "Changing shell to Zsh"
@@ -73,7 +126,7 @@ echo "Looking for Oh My Zsh..."
 
 if [ ! -d "$HOME/.oh-my-zsh" ] ; then
   echo "Oh My Zsh Not Found, installing..."
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended || { echo 'Getting Oh My Zsh failed...' ; exit 1; }
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended || { warn $'Getting Oh My Zsh failed...' ; exit 1; }
   echo "...done installing zsh"
 else
   echo "Oh My Zsh found, continuing..."
@@ -127,7 +180,9 @@ echo "Checking for vim-plug..."
 if [ ! -f "$HOME/.vim/autoload/plug.vim" ] ; then
   echo "Vim-plug not found, installing..."
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim || { 
+      warn $'installing vim-plug failed' ; exit 1; }
+
 else
   echo "Vim-plug found, continuing..."
 fi
@@ -163,14 +218,12 @@ echo "------------------------------------------------"
 echo " Thanks for using my Script!"
 echo " Make sure to exec vim and run :PlugInstall"
 echo " Tyler(UnclassedPenguin) 2022"
+echo " "
+echo "    URL: https://unclassed.ca"
+echo " GitHub: https://github.com/unclassedpenguin"
 echo "------------------------------------------------"
 echo "------------------------------------------------"
 
 #-------------------------------------------------------------------------------
 # End Message 
-#-------------------------------------------------------------------------------
-
-
-#-------------------------------------------------------------------------------
-# Program End
 #-------------------------------------------------------------------------------

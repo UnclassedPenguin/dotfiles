@@ -17,30 +17,32 @@
 # Variables
 #---------------------------------------------------------------------------------------------
 
+# Where you want to put dotfiles_old/
+basedir=~/git/
 
-#---------------------------------------------------------------------------------------------
-# Variables
-#---------------------------------------------------------------------------------------------
+# Your dotfiles directory
+dir=~/git/dotfile
 
-basedir=~/git/                                  # Where you want to put dotfiles_old/
-dir=~/git/dotfiles                              # Your dotfiles directory
-budir=~/git/dotfiles_old                        # dotfiles_old directory
+# dotfiles_old directory
+budir=~/git/dotfiles_old
 
 if [ -f "$HOME/.i3status.conf" ] && [ -f "$HOME/.config/i3/config" ] ; then
-  files="i3status.conf vimrc Xresources zshrc"    # Files to symlink
-  i3conf=i3config                                 # ~/.config/i3/config name in backup/dotfiles
+  # Files to symlink
+  files="i3status.conf vimrc Xresources zshrc"    
+
+  # ~/.config/i3/config name in backup/dotfiles
+  i3conf=i3config                                 
+
 else
-  files="vimrc Xresources zshrc"                  # Files to symlink
+  # Files to symlink
+  files="vimrc Xresources zshrc"                  
+
 fi
 
 #---------------------------------------------------------------------------------------------
 # End Variables
 #---------------------------------------------------------------------------------------------
 
-
-#---------------------------------------------------------------------------------------------
-# Program start
-#---------------------------------------------------------------------------------------------
 
 # Change directory to backup directory
 
@@ -76,9 +78,21 @@ fi
 echo "Deleting $budir"
 cd ..
 rm -r $budir
-echo "...done! Thanks for playing!"
 
-#---------------------------------------------------------------------------------------------
-# End Program
-#---------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+# Message 
+#-------------------------------------------------------------------------------
 
+echo "------------------------------------------------"
+echo "------------------------------------------------"
+echo " Thanks for using my Script!"
+echo " Tyler(UnclassedPenguin) 2022"
+echo " "
+echo "    URL: https://unclassed.ca"
+echo " GitHub: https://github.com/unclassedpenguin"
+echo "------------------------------------------------"
+echo "------------------------------------------------"
+
+#-------------------------------------------------------------------------------
+# End Message 
+#-------------------------------------------------------------------------------
