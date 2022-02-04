@@ -28,7 +28,7 @@ export NPM_CONFIG_PREFIX=~/.npm-global
 export PATH=$PATH:~/.npm-global/bin
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/user/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Variables for virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
