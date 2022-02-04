@@ -1,4 +1,26 @@
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+#
+# Tyler(UnclassedPenguin) Dotfiles todo 2022
+#
+# Author: Tyler(UnclassedPenguin)
+#    URL: https://unclassed.ca
+# GitHub: https://github.com/UnclassedPenguin
+#
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+
+Usage: localleader is '\'
+<localleader><localleader>: insert a new section.
+<localleader><CR>: insert a new todo-element.
+<localleader>m: mark/unmark an element as done.
+<localleader>d (only in insert mode): insert the current date.
+
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+
 @ Things todo for dotfiles
+- [ ] Add ~/.oh-my-zsh/custom/alias.zsh to script and dotfiles. 
 - [x] Write a script to automatically write symlinks 
 - [x] vimrc 
 - [x] zshrc 
@@ -7,5 +29,3 @@
 - [x] i3-config
 
 # Well that is nice to have done... :)
-
-@ Anything else?
