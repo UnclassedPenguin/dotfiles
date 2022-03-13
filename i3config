@@ -202,7 +202,8 @@ bar {
 
         urgent_workspace   #2f343a #900000 #ffffff
     }
-        status_command i3status
+        #status_command i3status
+        status_command py3status -c ~/.py3status.conf
 }
 
 new_window pixel 1
@@ -223,6 +224,6 @@ exec xsetroot -solid "#1d1f21"
 # WINDOWS TO FLOAT
 # use 'xprop' to get class and instance
 # WM_CLASS(STRING)="instance", "Class"
-# for_window [class="" instance=""] floating enable
+# for_window [instance="" class=""] floating enable
 
-for_window [class="Firefox" instance="Devtools"] floating enable
+for_window [instance="Devtools" class="firefox"] floating enable

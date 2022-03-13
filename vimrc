@@ -96,6 +96,9 @@ nnoremap <C-H> <C-W><C-H>
 " open ~/.vimrc in buffer
 map <leader>ev :e ~/.vimrc<CR>
 
+" open ~/.todo.txt in buffer
+map <leader>td :e ~/.todo.txt<CR>
+
 " Turns off highlighting
 map <leader>h :noh<CR>
 
@@ -219,6 +222,9 @@ Plug 'laib3/vim-todo-plugin'
 
 " Python folding
 " Plug 'tmhedberg/SimpylFold'
+
+" For incrementing numbers
+Plug 'triglav/vim-visual-increment'
 
 call plug#end()
 

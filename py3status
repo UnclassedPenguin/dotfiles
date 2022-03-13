@@ -1,0 +1,89 @@
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+#
+# Tyler(UnclassedPenguin) py3status.conf 2022
+# 
+# Author: Tyler(UnclassedPenguin)
+#    URL: https://unclassed.ca
+# GitHub: https://github.com/UnclassedPenguin
+#
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+
+
+general {
+  output_format = "i3bar"
+  colors = true
+  interval = 5
+  color_good = "#3AEE19"
+  color_degraded = "#E0D99D"
+  color_bad = "#FF6969"
+  color_separator = "#7001df"
+}
+
+
+order += "disk /"
+order += "wireless wlp5s0b1"
+order += "ethernet enp1s0"
+order += "battery 0"
+order += "lm_sensors"
+order += "load"
+order += "clock"
+order += "clock UTC"
+order += "backlight"
+
+
+wireless wlp5s0b1 {
+  format_up = "W:%ip"
+  format_down = "W:▽"
+}
+
+ethernet enp1s0 {
+  # if you use %speed, i3status requires the cap_net_admin capability
+  format_up = "E:%ip (%speed)"
+  format_down = "E:▽"
+}
+
+battery 0 {
+  format = "%status %percentage %remaining"
+  path = "/sys/class/power_supply/BAT1/uevent"
+  low_threshold = 10
+}
+
+clock {
+  format = "{Local}"
+  format_time = "%Y-%m-%d %l:%M:%S%p"
+}
+
+#clock {
+  #format = ["L {Local}", "U {UTC}"]
+  #format_time = "%Y-%m-%d %l:%M:%S%p"
+#}
+
+clock 'UTC' {
+  format= "{UTC}"
+  format_time = "%H:%M"
+}
+
+load {
+  format = "%5min"
+}
+
+lm_sensors {
+  cache_timeout = 5
+  format_sensor = '[\?color=auto.input {input}°C]'
+  format_chip = "{format_sensor}"
+  sensors = ['core_0']
+}
+
+disk "/" {
+  format = "%used used/%total"
+  on_click 1 = "exec pcmanfm"
+}
+
+backlight {
+  brightness_delta = 5
+  brightness_initial = 40
+  brightness_minimal = 5
+  command = xbacklight
+}
