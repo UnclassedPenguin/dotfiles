@@ -97,7 +97,7 @@ nnoremap <C-H> <C-W><C-H>
 map <leader>ev :e ~/.vimrc<CR>
 
 " open ~/.todo.txt in buffer
-map <leader>td :e ~/.todo.txt<CR>
+map <leader>td :e ~/.todo/todo.txt<CR>
 
 " Turns off highlighting
 map <leader>h :noh<CR>
