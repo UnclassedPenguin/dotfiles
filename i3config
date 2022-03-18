@@ -223,6 +223,7 @@ exec xsetroot -solid "#1d1f21"
 
 # WINDOWS TO FLOAT
 # use 'xprop' to get class and instance
+# i.e. : xprop | grep WM_CLASS
 # WM_CLASS(STRING)="instance", "Class"
 # for_window [instance="" class=""] floating enable
 
