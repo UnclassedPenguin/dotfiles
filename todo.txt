@@ -20,6 +20,7 @@ Usage: localleader is '\'
 #-------------------------------------------------------------------------------
 
 @ Things todo for dotfiles
+- [ ] Add py3status to script 
 - [ ] Add ~/.oh-my-zsh/custom/alias.zsh to script and dotfiles. 
 - [x] Write a script to automatically write symlinks 
 - [x] vimrc 
