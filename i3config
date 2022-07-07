@@ -28,7 +28,9 @@ set $mod Mod1
 # is used in the bar {} block below.
 #font pango:monospace 8
 
-font pango:Noto Mono 10 
+font pango:Noto Mono 0 
+
+client.focused #0f5b75 #0f5b75  #ffffff #ffffff
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -45,7 +47,7 @@ font pango:Noto Mono 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt 
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -209,7 +211,12 @@ bar {
 new_window pixel 1
 
 # No border on windows
-for_window [class="^.*"] border pixel 0
+# for_window [class="^.*"] border pixel 0
+# I changed this to have a border on top so You can see what window
+# is focused. To put it back, uncomment previous line (border pixel 0)
+# And comment out next line. Also at top of config I have font size
+# set to 0
+for_window [class="^.*"] border normal 0
 
 # Scratchpad settings
 # put focused window in scratchpad
@@ -228,3 +235,5 @@ exec xsetroot -solid "#1d1f21"
 # for_window [instance="" class=""] floating enable
 
 for_window [instance="Devtools" class="firefox"] floating enable
+
+exec nm-applet

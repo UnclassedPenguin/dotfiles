@@ -23,50 +23,34 @@ general {
 
 
 order += "disk /"
-order += "wireless wlp5s0b1"
-order += "ethernet enp1s0"
-order += "battery 0"
+order += "disk /media/tyler/2ea550ab-c95a-46f7-9db8-e842fbb835bb"
+order += "wireless wlp2s0"
+order += "ethernet enp3s0"
 order += "lm_sensors"
 order += "load"
 order += "clock"
 order += "clock UTC"
-order += "backlight"
 
 
-wireless wlp5s0b1 {
+disk "/" {
+  format = "%used used/%total"
+  on_click 1 = "exec nemo"
+}
+
+disk "/media/tyler/2ea550ab-c95a-46f7-9db8-e842fbb835bb" {
+  format = "%used used/%total"
+  on_click 1 = "exec nemo /media/tyler/2ea550ab-c95a-46f7-9db8-e842fbb835bb"
+}
+
+wireless wlp2s0 {
   format_up = "W:%ip"
   format_down = "W:▽"
 }
 
-ethernet enp1s0 {
+ethernet enp3s0 {
   # if you use %speed, i3status requires the cap_net_admin capability
   format_up = "E:%ip (%speed)"
   format_down = "E:▽"
-}
-
-battery 0 {
-  format = "%status %percentage %remaining"
-  path = "/sys/class/power_supply/BAT1/uevent"
-  low_threshold = 10
-}
-
-clock {
-  format = "{Local}"
-  format_time = "%Y-%m-%d %l:%M:%S%p"
-}
-
-#clock {
-  #format = ["L {Local}", "U {UTC}"]
-  #format_time = "%Y-%m-%d %l:%M:%S%p"
-#}
-
-clock 'UTC' {
-  format= "{UTC}"
-  format_time = "%H:%M"
-}
-
-load {
-  format = "%5min"
 }
 
 lm_sensors {
@@ -76,14 +60,16 @@ lm_sensors {
   sensors = ['core_0']
 }
 
-disk "/" {
-  format = "%used used/%total"
-  on_click 1 = "exec pcmanfm"
+load {
+  format = "%5min"
 }
 
-backlight {
-  brightness_delta = 5
-  brightness_initial = 40
-  brightness_minimal = 5
-  command = xbacklight
+clock {
+  format = "{Local}"
+  format_time = "%Y-%m-%d %l:%M:%S%p"
+}
+
+clock 'UTC' {
+  format= "{UTC}"
+  format_time = "%H:%M"
 }
