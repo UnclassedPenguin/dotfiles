@@ -30,6 +30,7 @@ set $mod Mod1
 
 font pango:Noto Mono 0 
 
+# This sets the color of the top title bar. 
 client.focused #0f5b75 #0f5b75  #ffffff #ffffff
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left

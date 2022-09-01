@@ -72,7 +72,7 @@ dir=~/git/dotfiles
 budir=~/git/dotfiles_old
 
 echo "Checking for i3..."
-if [ -f "$HOME/.i3status.conf" ] && [ -f "$HOME/.config/i3/config" ] ; then
+if [ -x "$(command -v i3)" ] ; then
   echo "i3 Detected..."
 
   # Files to symlink if i3 detected
@@ -102,7 +102,7 @@ fi
 
 echo "Looking for Zsh..."
 
-if [ ! -f "/bin/zsh" ] ; then
+if ! [ -x "$(command -v zsh)" ] ; then
   # Install zsh
   echo "Zsh Not Found, installing..."
   echo "Updating resources..."
