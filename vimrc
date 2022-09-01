@@ -22,7 +22,7 @@ let maplocalleader = "\\"
 filetype on
 syntax on                       " Turn syntax on
 "set showbreak=+++              " Wrap-broken line prefix
-set showbreak=+                 " Wrap-broken line prefix
+"set showbreak=+                 " Wrap-broken line prefix
 set showmatch                   " Highlight matching brace
 set hlsearch                    " highlight all search results
 set smartcase                   " enable smart-case search
