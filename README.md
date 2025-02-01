@@ -1,7 +1,7 @@
 # dotfiles
 My dotfiles
 
-!!! install.sh is broken I believe. It needs work. Restructuring. Not gonna bother for now !!!
+!!! install.sh is broken I believe. It needs work. Restructuring. Not gonna bother for now !!!  
 `install.sh` backs up and creates symlinks for:
 
 - ~/.vimrc
