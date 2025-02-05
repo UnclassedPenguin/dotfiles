@@ -81,9 +81,9 @@ configuration {
 /*	kb-remove-word-forward: "Control+Alt+d";*/
 /*	kb-remove-char-forward: "Delete,Control+d";*/
 /*	kb-remove-char-back: "BackSpace,Shift+BackSpace,Control+h";*/
-/*	kb-remove-to-eol: "Control+k";*/
+        kb-remove-to-eol: "Control+Shift+e";
 /*	kb-remove-to-sol: "Control+u";*/
-/*	kb-accept-entry: "Control+j,Control+m,Return,KP_Enter";*/
+        kb-accept-entry: "Control+m,Return,KP_Enter";
 /*	kb-accept-custom: "Control+Return";*/
 /*	kb-accept-custom-alt: "Control+Shift+Return";*/
 /*	kb-accept-alt: "Shift+Return";*/
