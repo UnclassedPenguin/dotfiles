@@ -1,3 +1,4 @@
+# You will need "NetworkManager" installed to use nmcli
 # For device, you can use just d
 # or for radio you can use just r
 
