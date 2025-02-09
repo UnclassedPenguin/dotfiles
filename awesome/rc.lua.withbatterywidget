@@ -106,20 +106,42 @@ local battery_text = wibox.widget {
     widget = wibox.widget.textbox,
     align = "center",
     valign = "center",
-    font = "sans 10"
+    --font = "sans 10"
 }
 
 -- Add left padding using a margin container
 local battery_widget_with_padding = wibox.container.margin(battery_text, 10, 5, 0, 0) -- 10 pixels of left padding and 5 right
 
--- Function to update the battery widget
+-- Function to update the battery widget (Without Color)
+--local function update_battery_widget()
+    --awful.spawn.easy_async("acpi -b", function(stdout)
+        --local status, charge = stdout:match("(%a+), (%d+%%)")
+        --if status and charge then
+            ---- Shorten the status
+            --local short_status = (status:find("Charging") and "Cha" or "Dis")
+            --battery_text.text = string.format("%s (%s)", charge, short_status)
+        --else
+            --battery_text.text = "N/A"
+        --end
+    --end)
+--end
+
+-- Function to update the battery widget (With Color)
 local function update_battery_widget()
     awful.spawn.easy_async("acpi -b", function(stdout)
         local status, charge = stdout:match("(%a+), (%d+%%)")
         if status and charge then
-            -- Shorten the status
             local short_status = (status:find("Charging") and "Cha" or "Dis")
-            battery_text.text = string.format("%s (%s)", charge, short_status)
+            local charge_value = tonumber(charge:match("(%d+)")) -- Extract the numeric value
+
+            -- Set text color based on charge level using pastel colors
+            if charge_value >= 50 then
+                battery_text.markup = "<span foreground='#8CC88C'>" .. string.format("%s (%s)", charge, short_status) .. "</span>" -- Pastel Green
+            elseif charge_value >= 20 then
+                battery_text.markup = "<span foreground='#E3C94C'>" .. string.format("%s (%s)", charge, short_status) .. "</span>" -- Pastel Yellow
+            else
+                battery_text.markup = "<span foreground='#FF6F61'>" .. string.format("%s (%s)", charge, short_status) .. "</span>" -- Pastel Coral
+            end
         else
             battery_text.text = "N/A"
         end
@@ -129,9 +151,9 @@ end
 -- Initial update
 update_battery_widget()
 
--- Create a timer to update the widget every 30 seconds
+-- Create a timer to update the widget every 10 seconds
 local battery_timer = gears.timer {
-    timeout = 30,
+    timeout = 10,
     autostart = true,
     callback = update_battery_widget
 }
