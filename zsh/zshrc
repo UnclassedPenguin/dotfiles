@@ -14,11 +14,9 @@
 #-------------------------------------------------------------------------------
 # Custom variables
 #-------------------------------------------------------------------------------
-
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/.bin:/usr/local/bin:$PATH:/home/user/.gems/bin:$PATH:/home/user/.gem/ruby/2.7.0:$PATH
+export PATH=$HOME/.bin:/usr/local/bin:$PATH:/home/user/.gems/bin:$PATH:/home/user/.gem/ ruby/2.7.0:$PATH
 export PATH=$HOME/.local/bin:$PATH
-export PATH=$PATH:/usr/local/go/bin
 
 # Install Ruby Gems to ~/gems
 export GEM_HOME="$HOME/.gems"
@@ -37,6 +35,17 @@ export VIRTUALENVWRAPPER_VIRTUALENV_ARGS=' -p /usr/bin/python3 '
 export PROJECT_HOME=$HOME/programming/django
 #source /usr/local/bin/virtualenvwrapper.sh
 
+# Just go things
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin
+
+#fzf settings
+export FZF_DEFAULT_OPTS="
+  --height 40% 
+  --layout reverse 
+  --border"
+export FZF_DEFAULT_COMMAND='find .'
 
 #-------------------------------------------------------------------------------
 # End Custom variables
