@@ -93,6 +93,10 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Centers cursor to screen when scrolling by half pages
+nnoremap <C-D> <C-D>zz
+nnoremap <C-U> <C-U>zz
+
 " open ~/.vimrc in buffer
 map <leader>ev :e ~/.vimrc<CR>
 
