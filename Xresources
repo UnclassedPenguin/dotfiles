@@ -21,11 +21,11 @@ urxvt.scrollBar:False
 
 ! black
 *.color0:       #282a2e
-*.color8:       #373b41
+*.color8:       #6d747d
 
 ! red
 *.color1:       #a54242
-*.color9:       #cc6666
+*.color9:       #cc6677
 
 ! green
 *.color2:       #8c9440
