@@ -10,44 +10,264 @@
 !-------------------------------------------------------------------------------
 !-------------------------------------------------------------------------------
 
-urxvt.font:     xft:monospace:pixelsize=14
-urxvt.letterSpace:-2
-urxvt.scrollBar:False
+! I forget why this was set. It was set on my x280...Something to do with
+! high resolution screen I think.
+!*dpi:               120
+!Xft.dpi:            120
 
-! special
+urxvt.font:         xft:monospace:pixelsize=18
+urxvt.letterSpace:  -2
+urxvt.scrollBar:    False
+
+! This is the order of the color blocks. Organised like this so I can change
+! themes easily by just commenting them out.
+! (Most of the terminal.sexy themes have the background changed by me...)
+
+! special (fg,bg,cc)
+! black (0,8)
+! red (1,9)
+! green (2,10)
+! yellow (3,11)
+! blue (4,12)
+! magenta (5,13)
+! cyan (6,14)
+! white (7,15)
+
+!------------------------------------------------------------------------------
+! My Custome Theme
+!------------------------------------------------------------------------------
 *.foreground:   #c5c8c6
 *.background:   #1d1f21
 *.cursorColor:  #c5c8c6
 
-! black
 *.color0:       #282a2e
 *.color8:       #6d747d
 
-! red
 *.color1:       #a54242
-*.color9:       #cc6677
+*.color9:       #cc6666
 
-! green
 *.color2:       #8c9440
 *.color10:      #b5bd68
 
-! yellow
 *.color3:       #de935f
 *.color11:      #f0c674
 
-! blue
 *.color4:       #5f819d
 *.color12:      #81a2be
 
-! magenta
 *.color5:       #85678f
 *.color13:      #b294bb
 
-! cyan
 *.color6:       #5e8d87
 *.color14:      #8abeb7
 
-! white
 *.color7:       #707880
 *.color15:      #c5c8c6
+!------------------------------------------------------------------------------
+! End My Custom Theme
+!------------------------------------------------------------------------------
 
+!------------------------------------------------------------------------------
+! Ashes.dark (From terminal.sexy)
+!------------------------------------------------------------------------------
+!*.foreground:   #c7ccd1
+!*.background:   #1c2023
+!*.cursorColor:  #c7ccd1
+
+!*.color0:       #1c2023
+!*.color8:       #747c84
+
+!*.color1:       #c7ae95
+!*.color9:       #c7ae95
+
+!*.color2:       #95c7ae
+!*.color10:      #95c7ae
+
+!*.color3:       #aec795
+!*.color11:      #aec795
+
+!*.color4:       #ae95c7
+!*.color12:      #ae95c7
+
+!*.color5:       #c795ae
+!*.color13:      #c795ae
+
+!*.color6:       #95aec7
+!*.color14:      #95aec7
+
+!*.color7:       #c7ccd1
+!*.color15:      #f3f4f5
+!------------------------------------------------------------------------------
+! End Ashes.dark
+!------------------------------------------------------------------------------
+
+!------------------------------------------------------------------------------
+! Chalk.dark (From terminal.sexy)
+!------------------------------------------------------------------------------
+!*.foreground:   #d0d0d0
+!*.background:   #1d1f21
+!*.cursorColor:  #d0d0d0
+
+!*.color0:       #151515
+!*.color8:       #505050
+
+!*.color1:       #fb9fb1
+!*.color9:       #fb9fb1
+
+!*.color2:       #acc267
+!*.color10:      #acc267
+
+!*.color3:       #ddb26f
+!*.color11:      #ddb26f
+
+!*.color4:       #6fc2ef
+!*.color12:      #6fc2ef
+
+!*.color5:       #e1a3ee
+!*.color13:      #e1a3ee
+
+!*.color6:       #12cfc0
+!*.color14:      #12cfc0
+
+!*.color7:       #d0d0d0
+!*.color15:      #f5f5f5
+!------------------------------------------------------------------------------
+! End Chalk.dark
+!------------------------------------------------------------------------------
+
+!------------------------------------------------------------------------------
+! Grayscale.dark (From terminal.sexy)
+!------------------------------------------------------------------------------
+!*.foreground:   #b9b9b9
+!*.background:   #101010
+!*.cursorColor:  #b9b9b9
+
+!*.color0:       #101010
+!*.color8:       #525252
+
+!*.color1:       #7c7c7c
+!*.color9:       #7c7c7c
+
+!*.color2:       #8e8e8e
+!*.color10:      #8e8e8e
+
+!*.color3:       #a0a0a0
+!*.color11:      #a0a0a0
+
+!*.color4:       #686868
+!*.color12:      #686868
+
+!*.color5:       #747474
+!*.color13:      #747474
+
+!*.color6:       #868686
+!*.color14:      #868686
+
+!*.color7:       #b9b9b9
+!*.color15:      #f7f7f7
+!------------------------------------------------------------------------------
+! End Grayscale.dark
+!------------------------------------------------------------------------------
+
+!------------------------------------------------------------------------------
+! Mocha.dark (From Terminal.sexy)
+! (I quite like this one)
+!------------------------------------------------------------------------------
+!*.foreground:   #d0c8c6
+!*.background:   #1d1f21
+!*.cursorColor:  #d0c8c6
+
+!*.color0:       #3b3228
+!*.color8:       #7e705a
+
+!*.color1:       #cb6077
+!*.color9:       #cb6077
+
+!*.color2:       #beb55b
+!*.color10:      #beb55b
+
+!*.color3:       #f4bc87
+!*.color11:      #f4bc87
+
+!*.color4:       #8ab3b5
+!*.color12:      #8ab3b5
+
+!*.color5:       #a89bb9
+!*.color13:      #a89bb9
+
+!*.color6:       #7bbda4
+!*.color14:      #7bbda4
+
+!*.color7:       #d0c8c6
+!*.color15:      #f5eeeb
+!------------------------------------------------------------------------------
+! End Mocha.dark
+!------------------------------------------------------------------------------
+
+!------------------------------------------------------------------------------
+! Ocean.dark (From terminal.sexy
+!------------------------------------------------------------------------------
+!*.foreground:   #c0c5ce
+!*.background:   #1d1f21
+!*.cursorColor:  #c0c5ce
+
+!*.color0:       #2b303b
+!*.color8:       #65737e
+
+!*.color1:       #bf616a
+!*.color9:       #bf616a
+
+!*.color2:       #a3be8c
+!*.color10:      #a3be8c
+
+!*.color3:       #ebcb8b
+!*.color11:      #ebcb8b
+
+!*.color4:       #8fa1b3
+!*.color12:      #8fa1b3
+
+!*.color5:       #b48ead
+!*.color13:      #b48ead
+
+!*.color6:       #96b5b4
+!*.color14:      #96b5b4
+
+!*.color7:       #c0c5ce
+!*.color15:      #eff1f5
+!------------------------------------------------------------------------------
+! End Ocean.dark
+!------------------------------------------------------------------------------
+
+!------------------------------------------------------------------------------
+! Twilight.dark (From terminal.sexy)
+!------------------------------------------------------------------------------
+!*.foreground:   #a7a7a7
+!*.background:   #1d1f21
+!*.cursorColor:  #a7a7a7
+
+!*.color0:       #1e1e1e
+!*.color8:       #5f5a60
+
+!*.color1:       #cf6a4c
+!*.color9:       #cf6a4c
+
+!*.color2:       #8f9d6a
+!*.color10:      #8f9d6a
+
+!*.color3:       #f9ee98
+!*.color11:      #f9ee98
+
+!*.color4:       #7587a6
+!*.color12:      #7587a6
+
+!*.color5:       #9b859d
+!*.color13:      #9b859d
+
+!*.color6:       #afc4db
+!*.color14:      #afc4db
+
+!*.color7:       #a7a7a7
+!*.color15:      #ffffff
+!------------------------------------------------------------------------------
+! End Twilight.dark
+!------------------------------------------------------------------------------
