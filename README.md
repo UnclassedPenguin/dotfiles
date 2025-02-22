@@ -1,6 +1,15 @@
 # dotfiles
 My dotfiles
 
+
+#### Install oh my zsh:
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+#### Install juneplugg vim-plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+
 !!! install.sh is broken for sure. It needs work. Restructuring. Not gonna bother for now !!!  
 
 #### Todo:
