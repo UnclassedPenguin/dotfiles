@@ -5,12 +5,15 @@ My dotfiles
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
+[oh-my-zsh link](https://ohmyz.sh/)
 
-#### Install [juneplugg vim-plug](https://github.com/junegunn/vim-plug)
+#### Install juneplugg vim-plug
 ```sh
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
+[vim-plug link](https://github.com/junegunn/vim-plug)
+
 
 !!! install.sh is broken for sure. It needs work. Restructuring. Not gonna bother for now !!!  
 
