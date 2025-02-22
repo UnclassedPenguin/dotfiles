@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "pwd: $(pwd)" && echo " " && ls --color=tty
