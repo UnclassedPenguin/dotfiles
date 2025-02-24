@@ -1,3 +1,4 @@
 #!/bin/bash
+# Add "chpwd() pwdandls" to your alias.zsh. Maybe it should go in zshrc? I know it works in alias.zsh...
 
 echo "pwd: $(pwd)" && echo " " && ls --color=tty
