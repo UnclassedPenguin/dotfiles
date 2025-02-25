@@ -50,8 +50,17 @@ end
 --MY THEME
 beautiful.init("/home/tyler/.config/awesome/theme.lua")
 
+-- Icon for the start menu
+-- If you want to change it back, just change this uncomment the line under default icon
+-- and comment out the line under My icon
+-- Default icon
+--icon_image = beautiful.awesome_icon
+-- My icon
+icon_image = "/home/tyler/Pictures/whitemenu.png"
+
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
+terminal2 = "gnome-terminal"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -83,6 +92,68 @@ awful.layout.layouts = {
 }
 -- }}}
 
+-- {{{
+-- START BATTERY WIDGET
+-- Create a text widget to display battery status
+local battery_text = wibox.widget {
+    widget = wibox.widget.textbox,
+    align = "center",
+    valign = "center",
+    --font = "sans 10"
+}
+
+-- Add left padding using a margin container
+local battery_widget_with_padding = wibox.container.margin(battery_text, 10, 5, 0, 0) -- 10 pixels of left padding and 5 right
+
+-- Function to update the battery widget (Without Color)
+--local function update_battery_widget()
+    --awful.spawn.easy_async("acpi -b", function(stdout)
+        --local status, charge = stdout:match("(%a+), (%d+%%)")
+        --if status and charge then
+            ---- Shorten the status
+            --local short_status = (status:find("Charging") and "Cha" or "Dis")
+            --battery_text.text = string.format("%s (%s)", charge, short_status)
+        --else
+            --battery_text.text = "N/A"
+        --end
+    --end)
+--end
+
+-- Function to update the battery widget (With Color)
+local function update_battery_widget()
+    awful.spawn.easy_async("acpi -b", function(stdout)
+        local status, charge = stdout:match("(%a+), (%d+%%)")
+        if status and charge then
+            local short_status = (status:find("Charging") and "Cha" or "Dis")
+            local charge_value = tonumber(charge:match("(%d+)")) -- Extract the numeric value
+
+            -- Set text color based on charge level using pastel colors
+            if charge_value >= 50 then
+                battery_text.markup = "<span foreground='#8CC88C'>" .. string.format("%s (%s)", charge, short_status) .. "</span>" -- Pastel Green
+            elseif charge_value >= 20 then
+                battery_text.markup = "<span foreground='#E3C94C'>" .. string.format("%s (%s)", charge, short_status) .. "</span>" -- Pastel Yellow
+            else
+                battery_text.markup = "<span foreground='#FF6F61'>" .. string.format("%s (%s)", charge, short_status) .. "</span>" -- Pastel Coral
+            end
+        else
+            battery_text.text = "N/A"
+        end
+    end)
+end
+
+-- Initial update
+update_battery_widget()
+
+-- Create a timer to update the widget every 10 seconds
+local battery_timer = gears.timer {
+    timeout = 10,
+    autostart = true,
+    callback = update_battery_widget
+}
+
+-- END BATTERY WIDGET
+-- }}}
+
 -- {{{ Menu
 -- Create a launcher widget and a main menu
 myawesomemenu = {
@@ -94,11 +165,12 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
+                                    { "terminal", terminal },
+                                    { "firefox", "firefox" }
                                   }
                         })
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
+mylauncher = awful.widget.launcher({ image = icon_image,
                                      menu = mymainmenu })
 
 -- Menubar configuration
@@ -199,7 +271,14 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
+    s.mywibox = awful.wibar({ 
+      position = "top", 
+      screen = s,
+      height = 26,
+      border_width = 8,
+      border_color = "#1d1f21",
+      width = s.geometry.width-16,
+    })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -213,7 +292,8 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
+            --mykeyboardlayout,
+            battery_widget_with_padding,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
@@ -278,7 +358,10 @@ globalkeys = gears.table.join(
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
-              {description = "open a terminal", group = "launcher"}),
+              {description = "open a urxvt terminal", group = "launcher"}),
+
+    awful.key({ modkey, "Shift"   }, "t", function () awful.spawn(terminal2) end,
+              {description = "open a gnome terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "e", awesome.quit,
@@ -314,7 +397,7 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "d",     function () awful.spawn("rofi -show drun -font 'mono 11'") end,
+    awful.key({ modkey },            "d",     function () awful.spawn("rofi -show drun -font 'mono 14'") end,
               {description = "run rofi",  group = "launcher"}),
     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
@@ -567,4 +650,9 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+
+-- Autorun program, stored in ~/.config/awesome/
+awful.spawn.with_shell("~/.config/awesome/autorun.sh")
+
 
