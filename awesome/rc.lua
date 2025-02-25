@@ -244,7 +244,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag({ " ", " ", " ", " ", " ", " ", " ", " ", " " }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -260,14 +260,25 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytaglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
-        buttons = taglist_buttons
+        buttons = taglist_buttons,
+        style = {
+          shape_border_width = 1,
+          shape_border_color = '#696699',
+          shape = gears.shape.parallelogram
+        },
     }
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
+        buttons = tasklist_buttons,
+        -- This gives rounded radius to tasklist
+        style = {
+          --shape_border_width = 1,
+          --shape_border_color = '#ffffff',
+          shape = gears.shape.rounded_rect
+        },
     }
 
     -- Create the wibox
@@ -277,7 +288,7 @@ awful.screen.connect_for_each_screen(function(s)
       height = 26,
       border_width = 8,
       border_color = "#1d1f21",
-      width = s.geometry.width-16,
+      width = s.geometry.width-30,
     })
 
     -- Add widgets to the wibox
