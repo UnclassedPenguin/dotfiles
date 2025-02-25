@@ -11,12 +11,18 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
+-- My custom theme color
+local theme_color   = "#696699"
+--local theme_color   = "#535d6c"
+--local theme_color   = "#735e99"
+--local theme_color   = "#776699"
+--local theme_color   = "#996688"
+
 theme.font          = "mono 9"
 
 --theme.bg_normal     = "#222222"
 theme.bg_normal     = "#1d1f21"
---theme.bg_focus      = "#535d6c"
-theme.bg_focus      = "#735e99"
+theme.bg_focus      = theme_color
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
@@ -26,10 +32,11 @@ theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
-theme.useless_gap   = dpi(0)
+theme.useless_gap   = dpi(2)
 theme.border_width  = dpi(1)
 theme.border_normal = "#000000"
-theme.border_focus  = "#535d6c"
+--theme.border_focus  = "#535d6c"
+theme.border_focus  = theme_color
 theme.border_marked = "#91231c"
 
 -- There are other variable sets
