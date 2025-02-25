@@ -256,6 +256,7 @@ awful.screen.connect_for_each_screen(function(s)
                            awful.button({ }, 3, function () awful.layout.inc(-1) end),
                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen  = s,
@@ -264,7 +265,8 @@ awful.screen.connect_for_each_screen(function(s)
         style = {
           shape_border_width = 1,
           shape_border_color = '#696699',
-          shape = gears.shape.parallelogram
+          --shape = gears.shape.parallelogram
+          shape = function(cr) gears.shape.parallelogram(cr,14,19) end
         },
     }
 
@@ -277,7 +279,7 @@ awful.screen.connect_for_each_screen(function(s)
         style = {
           --shape_border_width = 1,
           --shape_border_color = '#ffffff',
-          shape = gears.shape.rounded_rect
+          shape = function(cr,w,h) gears.shape.rounded_rect(cr,w,h,10) end
         },
     }
 
