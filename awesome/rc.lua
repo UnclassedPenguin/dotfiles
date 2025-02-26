@@ -265,10 +265,16 @@ awful.screen.connect_for_each_screen(function(s)
         style = {
           shape_border_width = 1,
           shape_border_color = '#696699',
-          --shape = gears.shape.parallelogram
-          shape = function(cr) gears.shape.parallelogram(cr,14,19) end
+          squares_sel = "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png",
+          squares_sel_empty = "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png",
+          squares_unsel = "/home/tyler/Pictures/awesome-assets/purplemenu-19x19.png",
+          --squares_unsel_empty = "/home/tyler/Pictures/awesome-assets/purplemenu-19x19.png",
+          shape = function(cr) gears.shape.parallelogram(cr,16,19) end
         },
     }
+
+    -- Add a margin to the left side of the taglist
+    s.mytaglist_with_margin = wibox.container.margin(s.mytaglist,10,0,0,0)
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
@@ -279,9 +285,25 @@ awful.screen.connect_for_each_screen(function(s)
         style = {
           --shape_border_width = 1,
           --shape_border_color = '#ffffff',
+          spacing = 10,
           shape = function(cr,w,h) gears.shape.rounded_rect(cr,w,h,10) end
         },
+        widget_template = {
+          {
+            {
+              id = "text_role",
+              widget = wibox.widget.textbox,
+            },
+            left = 10, -- Adds 10 pixel of padding to left side of items in task list
+            widget = wibox.container.margin,
+          },
+          id = "background_role",
+          widget = wibox.container.background,
+        },
     }
+
+    -- Add padding to left side of tasklist
+    s.mytasklist_with_margin = wibox.container.margin(s.mytasklist,10,0,0,0)
 
     -- Create the wibox
     s.mywibox = awful.wibar({ 
@@ -299,10 +321,10 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             mylauncher,
-            s.mytaglist,
+            s.mytaglist_with_margin,
             s.mypromptbox,
         },
-        s.mytasklist, -- Middle widget
+        s.mytasklist_with_margin, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             --mykeyboardlayout,

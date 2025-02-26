@@ -1,0 +1,2 @@
+You want the menuicon for the taglist to be sized 1 pixel less than the height of the wibar. So make the awful.wibar look good at whatever height, and then use conver to make some smaller images for it, so for me my bar is set to 20, so i want to resize to 19:
+convert purplemenu.png -resize 19x19 purplemenu-19x19.png
