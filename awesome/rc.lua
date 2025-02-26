@@ -56,7 +56,7 @@ beautiful.init("/home/tyler/.config/awesome/theme.lua")
 -- Default icon
 --icon_image = beautiful.awesome_icon
 -- My icon
-icon_image = "/home/tyler/Pictures/purplemenu.png"
+icon_image = "/home/tyler/Pictures/awesome-assets/purplemenu.png"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
