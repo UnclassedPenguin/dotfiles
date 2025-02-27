@@ -66,16 +66,48 @@ end
 -- The local file to save current theme to and read the current theme from
 local saved_theme_file = "/home/tyler/.config/awesome/current_theme"
 
--- Here is where the themes are defined. A theme comprises of 3 elements,
--- a theme_icon, theme_color(background), and a fg_color(font color). So theme 1 would
--- be themes[1][1], themes[1][2], themes[1][3]
+-- Here is where the themes are defined. A theme comprises of 5 elements,
+-- a theme_icon, theme_color(background), fg_color(font color),
+-- squares_sel icon and a squares_unsel icon
+-- So theme 1 would be themes[1][1], themes[1][2], themes[1][3]
+-- themes[1][4] themes[1][5]
 local themes = {
-  -- Theme 1: Purple
-  {"/home/tyler/Pictures/awesome-assets/purplemenu.png", "#696699", "#ffffff"},
--- Theme 2: White 
-  {"/home/tyler/Pictures/awesome-assets/whitemenu.png", "#ffffff", "#000000"},
--- Theme 3: dunno
-  {"/home/tyler/Pictures/awesome-assets/purplemenu.png", "#000000", "#ffffff"},
+  -- Theme 1: White 
+  {"/home/tyler/Pictures/awesome-assets/whitemenu.png", "#ffffff", "#000000",
+   "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png",
+   "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png"},
+  -- Theme 2: Light Purple
+  {"/home/tyler/Pictures/awesome-assets/lightpurplemenu.png", "#b3a0c3", "#ffffff",
+   "/home/tyler/Pictures/awesome-assets/lightpurplemenu-19x19.png",
+   "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png"},
+  -- Theme 3: Purple
+  {"/home/tyler/Pictures/awesome-assets/purplemenu.png", "#696699", "#ffffff",
+   "/home/tyler/Pictures/awesome-assets/purplemenu-19x19.png",
+   "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png"},
+  -- Theme 4: Rose
+  {"/home/tyler/Pictures/awesome-assets/rosemenu.png", "#a76d7d", "#ffffff",
+   "/home/tyler/Pictures/awesome-assets/rosemenu-19x19.png",
+   "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png"},
+  -- Theme 5: Light grey
+  {"/home/tyler/Pictures/awesome-assets/lightgreymenu.png", "#7f7f7f", "#ffffff",
+   "/home/tyler/Pictures/awesome-assets/lightgreymenu-19x19.png",
+   "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png"},
+  -- Theme 6: Teal
+  {"/home/tyler/Pictures/awesome-assets/tealmenu.png", "#6a9a9a", "#ffffff",
+   "/home/tyler/Pictures/awesome-assets/tealmenu-19x19.png",
+   "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png"},
+  -- Theme 7: Green
+  {"/home/tyler/Pictures/awesome-assets/greenmenu.png", "#a8d8a0", "#000000",
+   "/home/tyler/Pictures/awesome-assets/greenmenu-19x19.png",
+   "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png"},
+  -- Theme 8: Yellow
+  {"/home/tyler/Pictures/awesome-assets/yellowmenu.png", "#e6d68a", "#000000",
+   "/home/tyler/Pictures/awesome-assets/yellowmenu-19x19.png",
+   "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png"},
+  -- Theme 9: Dark red
+  {"/home/tyler/Pictures/awesome-assets/darkredmenu.png", "#420420", "#ffffff",
+   "/home/tyler/Pictures/awesome-assets/darkredmenu-19x19.png",
+   "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png"},
 }
 
 -- Default theme index, if the save file doesn't exist or doesn't work
@@ -122,6 +154,24 @@ local function change_theme()
       elseif key == "3" then
         change_theme_and_restart(3)
         return false
+      elseif key == "4" then
+        change_theme_and_restart(4)
+        return false
+      elseif key == "5" then
+        change_theme_and_restart(5)
+        return false
+      elseif key == "6" then
+        change_theme_and_restart(6)
+        return false
+      elseif key == "7" then
+        change_theme_and_restart(7)
+        return false
+      elseif key == "8" then
+        change_theme_and_restart(8)
+        return false
+      elseif key == "9" then
+        change_theme_and_restart(9)
+        return false
       end
     end
   end)
@@ -131,10 +181,13 @@ end
 load_theme_index()
 
 -- Set the theme!
-local icon_image        = themes[theme_index][1]
-local theme_color       = themes[theme_index][2]
-beautiful.border_focus  = themes[theme_index][2]
-local fg_color_to_use   = themes[theme_index][3]
+local icon_image                = themes[theme_index][1]
+local theme_color               = themes[theme_index][2]
+beautiful.border_focus          = themes[theme_index][2]
+local fg_color_to_use           = themes[theme_index][3]
+local squares_unsel_option      = themes[theme_index][4]
+local squares_sel_empty_option  = themes[theme_index][4]
+local squares_sel_option        = themes[theme_index][5]
 
 -- Icon for the start menu
 -- If you want to change it back, uncomment the line under default icon
@@ -351,9 +404,10 @@ awful.screen.connect_for_each_screen(function(s)
         style = {
           shape_border_width = 1,
           shape_border_color = theme_color,
-          squares_sel = "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png",
-          squares_sel_empty = "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png",
-          squares_unsel = "/home/tyler/Pictures/awesome-assets/purplemenu-19x19.png",
+          bg_focus = theme_color,
+          squares_sel = squares_sel_option,
+          squares_sel_empty = squares_sel_empty_option,
+          squares_unsel = squares_unsel_option,
           --squares_unsel_empty = "/home/tyler/Pictures/awesome-assets/purplemenu-19x19.png",
           shape = function(cr) gears.shape.parallelogram(cr,14,19) end
         },
