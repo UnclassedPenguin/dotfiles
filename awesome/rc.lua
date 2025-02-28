@@ -578,7 +578,7 @@ globalkeys = gears.table.join(
               {description = "+1-9 Change theme to 1-9",  group = "Custom"}),
 
     -- Prompt
-    awful.key({ modkey },            "d",     function () awful.spawn("rofi -show drun -font 'mono 14'") end,
+    awful.key({ modkey },            "d",     function () awful.spawn("rofi -show drun -font 'mono 10'") end,
               {description = "run rofi",  group = "launcher"}),
     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
