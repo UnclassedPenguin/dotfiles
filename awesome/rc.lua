@@ -43,12 +43,15 @@ do
 end
 -- }}}
 
+-- Home directory
+local homedir = "/home/tyler/"
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 --MY THEME
-beautiful.init("/home/tyler/.config/awesome/theme.lua")
+beautiful.init(homedir .. ".config/awesome/theme.lua")
 
 -- Function to send a notification to the screen, useful for debugging
 local function notify(title, message)
@@ -64,7 +67,7 @@ end
 --{{{ Theme color changer
 
 -- The local file to save current theme to and read the current theme from
-local saved_theme_file = "/home/tyler/.config/awesome/current_theme"
+local saved_theme_file = homedir .. ".config/awesome/current_theme"
 
 -- Here is where the themes are defined. A theme comprises of 5 elements,
 -- a theme_icon, theme_color(background), fg_color(font color),
@@ -73,41 +76,41 @@ local saved_theme_file = "/home/tyler/.config/awesome/current_theme"
 -- themes[1][4] themes[1][5]
 local themes = {
   -- Theme 1: White 
-  {"/home/tyler/Pictures/awesome-assets/whitemenu.png", "#ffffff", "#000000",
-   "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png",
-   "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png"},
+  {homedir .. "Pictures/awesome-assets/whitemenu.png", "#ffffff", "#000000",
+   homedir .. "Pictures/awesome-assets/whitemenu-19x19.png",
+   homedir .. "Pictures/awesome-assets/whitemenu-19x19.png"},
   -- Theme 2: Light Purple
-  {"/home/tyler/Pictures/awesome-assets/lightpurplemenu.png", "#b3a0c3", "#ffffff",
-   "/home/tyler/Pictures/awesome-assets/lightpurplemenu-19x19.png",
-   "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png"},
+  {homedir .. "Pictures/awesome-assets/lightpurplemenu.png", "#b3a0c3", "#ffffff",
+   homedir .. "Pictures/awesome-assets/lightpurplemenu-19x19.png",
+   homedir .. "Pictures/awesome-assets/whitemenu-19x19.png"},
   -- Theme 3: Purple
-  {"/home/tyler/Pictures/awesome-assets/purplemenu.png", "#696699", "#ffffff",
-   "/home/tyler/Pictures/awesome-assets/purplemenu-19x19.png",
-   "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png"},
+  {homedir .. "Pictures/awesome-assets/purplemenu.png", "#696699", "#ffffff",
+   homedir .. "Pictures/awesome-assets/purplemenu-19x19.png",
+   homedir .. "Pictures/awesome-assets/whitemenu-19x19.png"},
   -- Theme 4: Rose
-  {"/home/tyler/Pictures/awesome-assets/rosemenu.png", "#a76d7d", "#ffffff",
-   "/home/tyler/Pictures/awesome-assets/rosemenu-19x19.png",
-   "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png"},
+  {homedir .. "Pictures/awesome-assets/rosemenu.png", "#a76d7d", "#ffffff",
+   homedir .. "Pictures/awesome-assets/rosemenu-19x19.png",
+   homedir .. "Pictures/awesome-assets/whitemenu-19x19.png"},
   -- Theme 5: Light grey
-  {"/home/tyler/Pictures/awesome-assets/lightgreymenu.png", "#7f7f7f", "#ffffff",
-   "/home/tyler/Pictures/awesome-assets/lightgreymenu-19x19.png",
-   "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png"},
+  {homedir .. "Pictures/awesome-assets/lightgreymenu.png", "#7f7f7f", "#ffffff",
+   homedir .. "Pictures/awesome-assets/lightgreymenu-19x19.png",
+   homedir .. "Pictures/awesome-assets/whitemenu-19x19.png"},
   -- Theme 6: Teal
-  {"/home/tyler/Pictures/awesome-assets/tealmenu.png", "#6a9a9a", "#ffffff",
-   "/home/tyler/Pictures/awesome-assets/tealmenu-19x19.png",
-   "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png"},
+  {homedir .. "Pictures/awesome-assets/tealmenu.png", "#6a9a9a", "#ffffff",
+   homedir .. "Pictures/awesome-assets/tealmenu-19x19.png",
+   homedir .. "Pictures/awesome-assets/whitemenu-19x19.png"},
   -- Theme 7: Green
-  {"/home/tyler/Pictures/awesome-assets/greenmenu.png", "#a8d8a0", "#000000",
-   "/home/tyler/Pictures/awesome-assets/greenmenu-19x19.png",
-   "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png"},
+  {homedir .. "Pictures/awesome-assets/greenmenu.png", "#a8d8a0", "#000000",
+   homedir .. "Pictures/awesome-assets/greenmenu-19x19.png",
+   homedir .. "Pictures/awesome-assets/whitemenu-19x19.png"},
   -- Theme 8: Yellow
-  {"/home/tyler/Pictures/awesome-assets/yellowmenu.png", "#e6d68a", "#000000",
-   "/home/tyler/Pictures/awesome-assets/yellowmenu-19x19.png",
-   "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png"},
+  {homedir .. "Pictures/awesome-assets/yellowmenu.png", "#e6d68a", "#000000",
+   homedir .. "Pictures/awesome-assets/yellowmenu-19x19.png",
+   homedir .. "Pictures/awesome-assets/whitemenu-19x19.png"},
   -- Theme 9: Dark red
-  {"/home/tyler/Pictures/awesome-assets/darkredmenu.png", "#420420", "#ffffff",
-   "/home/tyler/Pictures/awesome-assets/darkredmenu-19x19.png",
-   "/home/tyler/Pictures/awesome-assets/whitemenu-19x19.png"},
+  {homedir .. "Pictures/awesome-assets/darkredmenu.png", "#420420", "#ffffff",
+   homedir .. "Pictures/awesome-assets/darkredmenu-19x19.png",
+   homedir .. "Pictures/awesome-assets/whitemenu-19x19.png"},
 }
 
 -- Default theme index, if the save file doesn't exist or doesn't work
@@ -408,7 +411,7 @@ awful.screen.connect_for_each_screen(function(s)
           squares_sel = squares_sel_option,
           squares_sel_empty = squares_sel_empty_option,
           squares_unsel = squares_unsel_option,
-          --squares_unsel_empty = "/home/tyler/Pictures/awesome-assets/purplemenu-19x19.png",
+          --squares_unsel_empty = homedir .. "Pictures/awesome-assets/purplemenu-19x19.png",
           shape = function(cr) gears.shape.parallelogram(cr,14,19) end
         },
     }
@@ -579,7 +582,7 @@ globalkeys = gears.table.join(
 
     -- Prompt
     awful.key({ modkey },            "d",     function () awful.spawn("rofi -show drun -font 'mono 10'") end,
-              {description = "run rofi",  group = "launcher"}),
+              {description = "Run rofi, a launcher for applications",  group = "launcher"}),
     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
 
