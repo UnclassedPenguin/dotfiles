@@ -12,5 +12,5 @@ Also installs zsh and oh my zsh if not installed.
 Uninstall deletes symlinks and puts everything back.
 
 ## To-do:
-- Make a version for i3/wm? or put it in the script which you are using? 
+- Make a version for i3/awesome? or put it in the script which you are using? 
 - Also put in the script a way to get username and update the rc.lua automatically?
