@@ -73,3 +73,5 @@ reboot
 
 # After install (after you setup wifi if you need to):
 sudo pacman -S screen git awesome rofi rxvt-unicode xorg-server xorg-xinit ttf-dejavu zsh w3m
+# If you want to use the new device to be able to install, you will need arch-install-scripts as well:
+sudo pacman -S arch-install-scripts
