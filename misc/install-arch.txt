@@ -1,0 +1,75 @@
+# This is for installing to a drive from an existing arch install (I have a usb with arch on it)
+# It is NOT a complete install guide...
+
+# You need to format the drive first.
+# To become root
+sudo su
+# To find the drive you want to install to
+fdisk -l
+# In this example, I will use /dev/sdc, but the c could change.
+# I like using cfdisk to format.
+cfdisk /dev/sdc
+# I typically just make a single primary partition with the type linux. Make sure to add the bootable flag
+# Add a filesystem
+mkfs.ext4 /dev/sdc1
+# Mount the root volume so we can work with it
+mount /dev/sdc1 /mnt
+# Install base system
+pacstrap -K /mnt base linux linux-firmware vim man-db man-pages
+# Generate fstab
+genfstab -U /mnt >> /mnt/etc/fstab
+# Change root into new system
+arch-chroot /mnt
+# Set time zone (America/Edmonton)
+ln -sf /usr/share/zoneinfo/REGION/CITY /etc/localtime
+# Run hwclock to generate /etc/adjtime
+hwclock --systohc
+# Edit /etc/locale.gen and uncomment en_US.UTF-8 UTF-8
+vim /etc/locale.gen
+# Then generate the locales
+locale-gen
+# Create /etc/locale.conf 
+vim /etc/locale.conf
+# and put into it:
+LANG=en_US.UTF-8
+# Create /etc/vconsole.conf 
+vim /etc/vconsole.conf
+#and put into it:
+KEYMAP=us
+# Give your system a sweet hostname in /etc/hostname
+vim /etc/hostname
+# Install networking (NetworkManager)
+pacman -S networkmanager
+# Enable NetworkManager
+systemctl enable NetworkManager
+# Set root password
+passwd
+# Install grub (bootloader)
+pacman -S grub
+# Run (on the disk, not the partition):
+grub-install --target=i386-pc /dev/sdc
+# Generate grub.cfg
+grub-mkconfig -o /boot/grub/grub.cfg
+# Create new user (tyler)
+useradd -m -g users -G wheel,storage,power,video -s /bin/bash tyler
+# Change password for user (tyler)
+passwd tyler
+# Install sudo
+pacman -S sudo
+# Edit sudoers file to allow sudo for users in group wheel
+EDITOR=vim visudo
+# Uncomment this line:
+%wheel ALL=(ALL:ALL) ALL
+# Exit from the chroot
+exit
+# Copy over install-arch.txt if you want
+cp /home/tyler/install-arch.txt /mnt/home/tyler/
+# And maybe wifi-help.txt too
+cp /home/tyler/wifi-help.txt /mnt/home/tyler/
+# Unmount the partition
+umount /mnt
+# Reboot and enjoy!
+reboot
+
+# After install (after you setup wifi if you need to):
+sudo pacman -S screen git awesome rofi rxvt-unicode xorg-server xorg-xinit ttf-dejavu zsh w3m
