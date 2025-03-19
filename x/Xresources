@@ -15,9 +15,9 @@
 !*dpi:               120
 !Xft.dpi:            120
 
-urxvt.font:         xft:monospace:pixelsize=18
-urxvt.letterSpace:  -2
-urxvt.scrollBar:    False
+*.font:         xft:monospace:pixelsize=18
+*.letterSpace:  -2
+*.scrollBar:    False
 
 ! This is the order of the color blocks. Organised like this so I can change
 ! themes easily by just commenting them out.

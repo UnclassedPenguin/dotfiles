@@ -200,6 +200,40 @@ local squares_sel_option        = themes[theme_index][5]
 
 --}}}
 
+
+--{{{ Scratchpad
+-- This is for the scratchpad, that opens a urxvt window that can be brought forward and hidden into the background.
+-- There is a rule set further on, and a key binding set as well. Search "Scratchpad" to find them.
+
+-- Function to toggle the scratchpad
+local function toggle_scratchpad()
+  local scratchpad_terminal = nil
+  for _, client in pairs(client.get()) do
+    if client.class == "URxvt" and client.instance == "scratchpad" then
+      scratchpad_terminal = client
+      break
+    end
+  end
+
+  if scratchpad_terminal then
+    if scratchpad_terminal.hidden then
+      -- If terminal is hidden, show it
+      scratchpad_terminal.hidden = false
+      client.focus = scratchpad_terminal
+    else
+      -- If terminal is visible, hide it
+      scratchpad_terminal.hidden = true
+    end
+  else
+    -- If terminal doesn't exist, create it
+    -- This is also where you can change the default size, just change geometry
+    awful.spawn("urxvt -name scratchpad -geometry 100x35", false)
+  end
+end
+
+--}}} End Scratchpad
+
+
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
 terminal2 = "gnome-terminal"
@@ -579,6 +613,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey },            "b",     function () change_theme() end,
               {description = "+1-9 Change theme to 1-9",  group = "Custom"}),
 
+    -- Scratchpad keybinding
+    awful.key({ modkey },            "a", toggle_scratchpad,
+              {description = "toggle scratchpad", group = "custom" }),
+
     -- Prompt
     awful.key({ modkey },            "d",     function () awful.spawn("rofi -show drun -font 'mono 10'") end,
               {description = "Run rofi, a launcher for applications",  group = "launcher"}),
@@ -715,6 +753,22 @@ root.keys(globalkeys)
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
+
+    -- Scratchpad rule
+    { rule = { class = "URxvt", instance = "scratchpad" },
+      properties = {
+        ontop = true,
+        sticky = true,
+        skip_taskbar = true,
+        focus = true,
+        floating = true,
+        titlebars_enabled = false,
+      },
+      callback = function(c)
+        awful.placement.centered(c, { honor_workarea=true, honor_padding=true })
+      end,
+    },
+
     -- All clients will match this rule.
     { rule = { },
       properties = { border_width = beautiful.border_width,
