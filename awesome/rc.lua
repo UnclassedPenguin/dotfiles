@@ -525,6 +525,34 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+
+    -- Volume Control
+    awful.key({ }, "XF86AudioRaiseVolume", function ()
+              awful.util.spawn("amixer set Master 1db+") end),
+    awful.key({ }, "XF86AudioLowerVolume", function ()
+              awful.util.spawn("amixer set Master 1db-") end),
+    awful.key({ }, "XF86AudioMute", function ()
+              awful.util.spawn("amixer sset Master toggle") end),
+
+    -- Brightness Control
+    awful.key({ }, "XF86MonBrightnessUp", function ()
+              awful.util.spawn("xbacklight -inc 5") end),
+    awful.key({ }, "XF86MonBrightnessDown", function ()
+              awful.util.spawn("xbacklight -dec 5") end),
+
+    -- Key combo to change theme colors
+    awful.key({ modkey },            "b",     function () change_theme() end,
+              {description = "+1-9 Change theme to 1-9",  group = "Custom"}),
+
+    -- Scratchpad keybinding
+    awful.key({ modkey },            "a", toggle_scratchpad,
+              {description = "toggle scratchpad", group = "custom" }),
+
+    -- Prompt
+    awful.key({ modkey },            "d",     function () awful.spawn("rofi -show drun -font 'mono 10'") end,
+              {description = "Run rofi, a launcher for applications",  group = "launcher"}),
+
+
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -609,17 +637,6 @@ globalkeys = gears.table.join(
               end,
               {description = "restore minimized", group = "client"}),
 
-    -- Key combo to change theme colors
-    awful.key({ modkey },            "b",     function () change_theme() end,
-              {description = "+1-9 Change theme to 1-9",  group = "Custom"}),
-
-    -- Scratchpad keybinding
-    awful.key({ modkey },            "a", toggle_scratchpad,
-              {description = "toggle scratchpad", group = "custom" }),
-
-    -- Prompt
-    awful.key({ modkey },            "d",     function () awful.spawn("rofi -show drun -font 'mono 10'") end,
-              {description = "Run rofi, a launcher for applications",  group = "launcher"}),
     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
 
