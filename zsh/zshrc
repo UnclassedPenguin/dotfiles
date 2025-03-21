@@ -15,7 +15,7 @@
 # Custom variables
 #-------------------------------------------------------------------------------
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/.bin:/usr/local/bin:$PATH:/home/user/.gems/bin:$PATH:/home/user/.gem/ruby/2.7.0:$PATH
+export PATH=$HOME/.bin:/usr/local/bin:$PATH:$HOME/.gems/bin:$PATH:$HOME/.gem/ruby/2.7.0:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
 # Install Ruby Gems to ~/gems
