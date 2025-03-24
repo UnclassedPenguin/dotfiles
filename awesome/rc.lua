@@ -186,6 +186,7 @@ load_theme_index()
 -- Set the theme!
 local icon_image                = themes[theme_index][1]
 local theme_color               = themes[theme_index][2]
+local rofi_border_color         = thmees[theme_index][2]
 beautiful.border_focus          = themes[theme_index][2]
 local fg_color_to_use           = themes[theme_index][3]
 local squares_unsel_option      = themes[theme_index][4]
@@ -549,7 +550,7 @@ globalkeys = gears.table.join(
               {description = "toggle scratchpad", group = "custom" }),
 
     -- Prompt
-    awful.key({ modkey },            "d",     function () awful.spawn("rofi -show drun -font 'mono 10'") end,
+    awful.key({ modkey },            "d",     function () awful.spawn("rofi -show drun -font 'mono 10' -theme-str 'window{border-color: " .. rofi_border_color .. ";}'") end,
               {description = "Run rofi, a launcher for applications",  group = "launcher"}),
 
 
