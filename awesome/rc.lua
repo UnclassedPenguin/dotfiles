@@ -446,7 +446,7 @@ awful.screen.connect_for_each_screen(function(s)
           squares_sel_empty = squares_sel_empty_option,
           squares_unsel = squares_unsel_option,
           --squares_unsel_empty = homedir .. "Pictures/awesome-assets/purplemenu-19x19.png",
-          shape = function(cr) gears.shape.parallelogram(cr,14,19) end
+          shape = function(cr) gears.shape.parallelogram(cr,10,14) end
         },
     }
 
@@ -488,7 +488,7 @@ awful.screen.connect_for_each_screen(function(s)
     s.mywibox = awful.wibar({ 
       position = "top", 
       screen = s,
-      height = 20,
+      height = 15,
       border_width = 8,
       border_color = "#1d1f21",
       width = s.geometry.width-30,
