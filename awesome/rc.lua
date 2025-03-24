@@ -235,6 +235,31 @@ end
 --}}} End Scratchpad
 
 
+--{{{ My Random Functions
+
+local function resize_and_center()
+  local c = client.focus
+  if c then
+    -- Check if the client is not floating
+    if not c.floating then
+      -- Make the client floating
+      awful.client.floating.toggle(c)
+    end
+    local screen = awful.screen.focused()
+    local width = screen.geometry.width * 0.75
+    local height = screen.geometry.height * 0.92
+    c:geometry({
+      width = width,
+      height = height,
+      x = (screen.geometry.width - width) / 2,
+      y = (screen.geometry.height - height) / 2
+    })
+  end
+end
+
+--}}} End Random Functions
+
+
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
 terminal2 = "gnome-terminal"
@@ -554,6 +579,9 @@ globalkeys = gears.table.join(
       .. rofi_border_color .. ";} element selected.normal{border-color: " .. rofi_border_color .. ";}'") end,
               {description = "Run rofi, a launcher for applications",  group = "launcher"}),
 
+    -- Resize and Center
+    awful.key({ modkey }, "c", resize_and_center,
+              {description = "resize and center window", group = "custom"}),
 
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
