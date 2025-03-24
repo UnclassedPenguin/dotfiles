@@ -42,7 +42,7 @@ window {
     padding:          5;
     background-color: rgba ( 29, 31, 33, 100 % );
     /*border-color:     rgba ( 29, 31, 33, 100 % );*/
-    /*border-color:     white;*/
+    border-color:     white;
     border:           1;
 }
 mainbox {
