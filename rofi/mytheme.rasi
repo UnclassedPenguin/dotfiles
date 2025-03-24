@@ -92,7 +92,7 @@ element selected.normal {
     background-color: var(selected-normal-background);
     border-color:     White;
     text-color:       var(selected-normal-foreground);
-    /*border: 1px;*/
+    border: 1px;
 }
 element selected.urgent {
     background-color: var(selected-urgent-background);

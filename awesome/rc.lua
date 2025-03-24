@@ -550,7 +550,8 @@ globalkeys = gears.table.join(
               {description = "toggle scratchpad", group = "custom" }),
 
     -- Prompt
-    awful.key({ modkey },            "d",     function () awful.spawn("rofi -show drun -font 'mono 10' -theme-str 'window{border-color: " .. rofi_border_color .. ";}'") end,
+    awful.key({ modkey },            "d",     function () awful.spawn("rofi -show drun -font 'mono 10' -theme-str 'window{border-color: " 
+      .. rofi_border_color .. ";} element selected.normal{border-color: " .. rofi_border_color .. ";}'") end,
               {description = "Run rofi, a launcher for applications",  group = "launcher"}),
 
 
