@@ -51,6 +51,9 @@ zstyle ':vcs_info:git:*' formats '(%b%c%u%m)'
 zstyle ':vcs_info:git:*' actionformats '(%b%c%u%m|%a)'
 
 # Shell prompt
+# I like colors 130,166,208 for the path info and prompt. 
+# and maybe 97 or 141 for the right vcs info.
+# 130,97 is a darker combo. 208,141 is lighter for a darker screen.
 precmd() { 
   vcs_info
   print -P '%F{130}%~%f %F{97}${vcs_info_msg_0_}%f'
