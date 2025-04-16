@@ -58,16 +58,13 @@ precmd() {
 setopt PROMPT_SUBST
 PROMPT='%F{130}»%f '
 
-# load aliases
-#source $HOME/.aliases
-
 # tab autocomplete case insensitive
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 
-#-------------------------------------------------------------------------------
 
 # History settings
+#-------------------------------------------------------------------------------
 # Set the path to the history file
 HISTFILE=~/.zsh_history
 
@@ -105,9 +102,9 @@ setopt SHARE_HISTORY
 setopt EXTENDED_HISTORY
 
 
-#-------------------------------------------------------------------------------
-
 # Aliases
+#-------------------------------------------------------------------------------
+alias ls="ls --color=auto"
 alias x="exit"
 alias q="exit"
 alias h="exit"
