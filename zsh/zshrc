@@ -33,14 +33,14 @@ export PATH=$PATH:~/.npm-global/bin
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
 
-# fzf settings
+# Fzf settings
 export FZF_DEFAULT_OPTS="
   --height 40% 
   --layout reverse 
   --border"
 export FZF_DEFAULT_COMMAND='find .'
 
-# prompt git info
+# Prompt git info
 autoload -Uz vcs_info
 zstyle ':vcs_info:git:*' formats '(%b%c%u%m)'
 zstyle ':vcs_info:git:*' actionformats '(%b%c%u%m|%a)'
@@ -50,7 +50,7 @@ zstyle ':vcs_info:git:*' unstagedstr '!'
 zstyle ':vcs_info:git:*' formats '(%b%c%u%m)'
 zstyle ':vcs_info:git:*' actionformats '(%b%c%u%m|%a)'
 
-# shell prompt
+# Shell prompt
 precmd() { 
   vcs_info
   print -P '%F{130}%~%f %F{97}${vcs_info_msg_0_}%f'
@@ -58,7 +58,7 @@ precmd() {
 setopt PROMPT_SUBST
 PROMPT='%F{130}»%f '
 
-# tab autocomplete case insensitive
+# Tab autocomplete case insensitive
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 
@@ -117,7 +117,7 @@ alias taskcomp="task +computer list"
 
 alias screen="screen -T screen-256color"
 
-# git
+# Git
 alias gaa='git add --all'
 alias gcmsg='git commit --message'
 alias gp='git push'
