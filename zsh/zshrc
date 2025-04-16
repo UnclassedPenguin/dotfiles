@@ -10,303 +10,121 @@
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
 
-
-#-------------------------------------------------------------------------------
-# Custom variables
-#-------------------------------------------------------------------------------
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/.bin:/usr/local/bin:$PATH:$HOME/.gems/bin:$PATH:$HOME/.gem/ruby/2.7.0:$PATH
+export PATH=$HOME/.bin:$PATH:$HOME/.gems/bin:$PATH:$HOME/.gem/ruby/2.7.0:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
-# Install Ruby Gems to ~/gems
+# Install Ruby Gems to ~/.gems
 export GEM_HOME="$HOME/.gems"
 export PATH="$HOME/.gems/bin:$PATH"
 
 export NPM_CONFIG_PREFIX=~/.npm-global
 export PATH=$PATH:~/.npm-global/bin
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
 # Variables for virtualenv
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS=' -p /usr/bin/python3 '
-export PROJECT_HOME=$HOME/programming/django
+#export WORKON_HOME=$HOME/.virtualenvs 
+#export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3 
+#export VIRTUALENVWRAPPER_VIRTUALENV_ARGS=' -p /usr/bin/python3 ' 
+#export PROJECT_HOME=$HOME/programming/django 
 #source /usr/local/bin/virtualenvwrapper.sh
 
 # Just go things
-export PATH=$PATH:/usr/local/go/bin
+#export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
 
-#fzf settings
+# fzf settings
 export FZF_DEFAULT_OPTS="
   --height 40% 
   --layout reverse 
   --border"
 export FZF_DEFAULT_COMMAND='find .'
 
+# prompt git info
+autoload -Uz vcs_info
+zstyle ':vcs_info:git:*' formats '(%b%c%u%m)'
+zstyle ':vcs_info:git:*' actionformats '(%b%c%u%m|%a)'
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr '+'
+zstyle ':vcs_info:git:*' unstagedstr '!'
+zstyle ':vcs_info:git:*' formats '(%b%c%u%m)'
+zstyle ':vcs_info:git:*' actionformats '(%b%c%u%m|%a)'
+
+# shell prompt
+precmd() { 
+  vcs_info
+  print -P '%F{130}%~%f %F{97}${vcs_info_msg_0_}%f'
+}
+setopt PROMPT_SUBST
+PROMPT='%F{130}»%f '
+
+# load aliases
+#source $HOME/.aliases
+
+# tab autocomplete case insensitive
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
+
 #-------------------------------------------------------------------------------
-# End Custom variables
+
+# History settings
+# Set the path to the history file
+HISTFILE=~/.zsh_history
+
+# Set the number of commands to save in the history file
+HISTSIZE=10000
+
+# Set the number of commands to save in the history file when the shell exits
+SAVEHIST=10000
+
+# Ignore duplicate commands
+setopt HIST_IGNORE_DUPS
+
+# Ignore commands that start with a space
+setopt HIST_IGNORE_SPACE
+
+# Do not display a command in the history search that is already in the current history
+setopt HIST_FIND_NO_DUPS
+
+# Remove superfluous blanks from each command before saving it in the history list
+setopt HIST_REDUCE_BLANKS
+
+# Expire duplicate entries first when trimming history
+setopt HIST_EXPIRE_DUPS_FIRST
+
+# Do not execute immediately upon history expansion
+setopt HIST_VERIFY
+
+# Append to the history file, don't overwrite it
+setopt INC_APPEND_HISTORY
+
+# Share history between multiple sessions
+setopt SHARE_HISTORY
+
+# Save timestamps with each command in the history
+setopt EXTENDED_HISTORY
+
+
 #-------------------------------------------------------------------------------
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-#ZSH_THEME="random"
-#ZSH_THEME="strug"
-ZSH_THEME="tyler"
+# Aliases
+alias x="exit"
+alias q="exit"
+alias h="exit"
+alias ms="mineserv"
+alias n="newsboat"
+alias cdgo="cd ~/.go/src/github.com/unclassedpenguin"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-#ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" 
-        #"fox"
-        #"ys"
-        #"strug"
-        #"simple"
-        #"sammy"
-        #"refined"
-        #"juanghurtado"
-        #"jispwoso"
-        #"funky"
-        #"frisk"
-        #"dstufft"
-        #"darkblood"
-        #"robbyrussell")
+alias taskout="task +outside list"
+alias taskcomp="task +computer list"
 
-ZSH_THEME_RANDOM_CANDIDATES=(
-    "tyler"
-    "kiwi_modded"
-    "3den"
-    "Soliah"
-    "adben"
-    "af-magic"
-    "afowler"
-    "agnoster"
-    "alanpeabody"
-    "amuse"
-    "apple"
-    "arrow"
-    "aussiegeek"
-    "avit"
-    "awesomepanda"
-    "bira"
-    "blinks"
-    "bureau"
-    "candy-kingdom"
-    "candy"
-    "clean"
-    "cloud"
-    "crcandy"
-    "crunch"
-    "cypher"
-    "dallas"
-    "darkblood"
-    "daveverwer"
-    "dieter"
-    "dogenpunk"
-    "dpoggi"
-    "dst"
-    "dstufft"
-    "duellj"
-    "eastwood"
-    "edvardm"
-    "emotty"
-    "essembeh"
-    "evan"
-    "fino-time"
-    "fino"
-    "fishy"
-    "flazz"
-    "fletcherm"
-    "fox"
-    "frisk"
-    "frontcube"
-    "funky"
-    "fwalch"
-    "gallifrey"
-    "gallois"
-    "garyblessington"
-    "gentoo"
-    "geoffgarside"
-    "gianu"
-    "gnzh"
-    "gozilla"
-    "half-life"
-    "humza"
-    "imajes"
-    "intheloop"
-    "itchy"
-    "jaischeema"
-    "jbergantine"
-    "jispwoso"
-    "jnrowe"
-    "jonathan"
-    "josh"
-    "jreese"
-    "jtriley"
-    "juanghurtado"
-    "junkfood"
-    "kafeitu"
-    "kardan"
-    "kennethreitz"
-    "kiwi"
-    "kolo"
-    "kphoen"
-    "lambda"
-    "linuxonly"
-    "lukerandall"
-    "macovsky-ruby"
-    "macovsky"
-    "maran"
-    "mgutz"
-    "mh"
-    "michelebologna"
-    "mikeh"
-    "miloshadzic"
-    "minimal"
-    "mira"
-    "mlh"
-    "mortalscumbag"
-    "mrtazz"
-    "murilasso"
-    "muse"
-    "nanotech"
-    "nebirhos"
-    "nicoulaj"
-    "norm"
-    "obraun"
-    "oldgallois"
-    "peepcode"
-    "philips"
-    "pmcgee"
-    "pygmalion-virtualenv"
-    "pygmalion"
-    "random"
-    "re5et"
-    "refined"
-    "rgm"
-    "risto"
-    "rixius"
-    "rkj-repos"
-    "rkj"
-    "robbyrussell"
-    "sammy"
-    "simonoff"
-    "simple"
-    "skaro"
-    "smt"
-    "sonicradish"
-    "sorin"
-    "sporty_256"
-    "steeef"
-    "strug"
-    "sunaku"
-    "sunrise"
-    "superjarin"
-    "suvash"
-    "takashiyoshida"
-    "terminalparty"
-    "theunraveler"
-    "tjkirch"
-    "tjkirch_mod"
-    "tonotdo"
-    "trapd00r"
-    "wedisagree"
-    "wezm+"
-    "wezm"
-    "wuffers"
-    "xiong-chiamiov-plus"
-    "xiong-chiamiov"
-    "ys"
-    "zhann")
+alias screen="screen -T screen-256color"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# git
+alias gaa='git add --all'
+alias gcmsg='git commit --message'
+alias gp='git push'
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# ls when you cd
+# pwdandls is a command in ~/.bin
+chpwd() pwdandls
