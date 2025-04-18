@@ -56,7 +56,7 @@ zstyle ':vcs_info:git:*' actionformats '(%b%c%u%m|%a)'
 # 130,97 is a darker combo. 208,141 is lighter for a darker screen.
 precmd() { 
   vcs_info
-  print -P '%F{130}%~%f %F{97}${vcs_info_msg_0_}%f'
+  print -P '%F{130}%m %~%f %F{97}${vcs_info_msg_0_}%f'
 }
 setopt PROMPT_SUBST
 PROMPT='%F{130}»%f '
