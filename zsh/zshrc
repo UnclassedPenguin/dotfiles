@@ -61,6 +61,14 @@ precmd() {
 setopt PROMPT_SUBST
 PROMPT='%F{130}»%f '
 
+# Shell prompt for root
+#precmd() {
+#  vcs_info
+#  print -P '%F{9}%n@%m %~%f %F{141}${vcs_info_msg_0_}%f'
+#}
+#setopt PROMPT_SUBST
+#PROMPT='%F{9}#%f '
+
 # Tab autocomplete case insensitive
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
