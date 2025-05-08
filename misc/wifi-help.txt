@@ -14,6 +14,9 @@ nmcli device wifi list
 # Connect to a Wi-Fi network:
 nmcli device wifi connect SSID_or_BSSID password password
 
+# Connect to a Wi-Fi network, without leaving the password in your history:
+nmcli device wifi connect SSID_or_BSSID --ask
+
 # Connect to a hidden Wi-Fi network:
 nmcli device wifi connect SSID_or_BSSID password password hidden yes
 
