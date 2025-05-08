@@ -122,8 +122,13 @@ alias h="exit"
 alias ms="mineserv"
 alias n="newsboat"
 
-alias upgrade="sudo apt update && sudo apt upgrade"
+# Upgrade, uncomment based on distro
+# Arch
 #alias upgrade="sudo pacman -Syu"
+# Debian
+#alias upgrade="sudo apt update && sudo apt upgrade"
+# Gentoo
+#alias upgrade="sudo emerge --sync && sudo emerge -avuDN @world && echo 'Do not forget to do: sudo emerge --depclean!'"
 
 alias cdgo="cd ~/.go/src/github.com/unclassedpenguin"
 alias fv="fzf --height 40% --layout reverse --border --bind 'enter:become(vim {})'"
