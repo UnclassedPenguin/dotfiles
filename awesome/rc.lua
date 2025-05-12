@@ -583,6 +583,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "c", resize_and_center,
               {description = "resize and center window", group = "custom"}),
 
+    -- Screenshot
+    awful.key({ }, "Print", function ()
+              awful.util.spawn("scrot '/home/tyler/Pictures/screenshot_%Y-%m-%d_%H-%M-%S.png'") end),
+
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
