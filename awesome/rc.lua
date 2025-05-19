@@ -553,6 +553,7 @@ root.buttons(gears.table.join(
 globalkeys = gears.table.join(
 
     -- Volume Control
+    -- You may need to use "amixer set Master toggle" for mute on some systems
     awful.key({ }, "XF86AudioRaiseVolume", function ()
               awful.util.spawn("amixer set Master 5%+") end),
     awful.key({ }, "XF86AudioLowerVolume", function ()
