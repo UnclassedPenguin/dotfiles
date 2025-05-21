@@ -1,0 +1,28 @@
+window {
+  background-color: #1d1f21;
+  color: white;
+  border: 1px solid #1d1f21;
+}
+
+#input {
+  background-color: #1d1f21;
+  color: white;
+  border: 1px solid #1d1f21;
+}
+
+#input:focused {
+  box-shadow:none;
+}
+
+#entry:selected {
+  background-color: #1d1f21;
+  color: white;
+  border: 1px solid white
+}
+
+#input > image.left {
+    -gtk-icon-transform:scaleX(0);
+}
+#input > image.right {
+    -gtk-icon-transform:scaleX(0);
+}
