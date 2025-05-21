@@ -34,6 +34,7 @@ set expandtab                   " Use spaces instead of tabs
 set shiftwidth=2                " Number of auto-indent spaces
 set smarttab                    " Enable smart-tabs
 set softtabstop=2               " Number of spaces per Tab
+set tabstop=2               " Number of spaces per Tab
 set noerrorbells                " Turn off error bells
 set ruler                       " Show row and column ruler information
 set undolevels=1000             " Number of undo levels
