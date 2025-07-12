@@ -1,3 +1,12 @@
 #!/bin/bash
 
-acpi | awk '{print substr($3, 0, 1)}'
+# Get Battery status. If its "C" then it means it is "Charging"
+status=$(acpi | awk '{print substr($3, 0, 1)}')
+
+# If status is Charging, echo a lightning symbol to indicate so. 
+if [[ "$status" == "C" ]]; then
+    echo "⚡"
+# Otherwise, just show nothing. 
+else
+    echo ""
+fi
