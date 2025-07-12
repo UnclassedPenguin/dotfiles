@@ -18,10 +18,10 @@
   (box :class "battery"
        :orientation "h"
        :space-evenly false
-       :halign "start"
+       :halign "end"
        :spacing 2
-       bat
-       batstatus))
+       batstatus
+       bat))
 
 (defpoll batstatus :interval "10s"
   "scripts/getbatstatus")
