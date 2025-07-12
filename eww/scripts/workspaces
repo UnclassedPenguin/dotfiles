@@ -20,7 +20,7 @@ workspaces() {
         fi
 
         # set f(n) to true for active workspace
-        if [ $i -eq $active_workspace ]; then
+        if [[ "$i" -eq "$active_workspace" ]]; then
             f[$i]=1
         else
             f[$i]=0
