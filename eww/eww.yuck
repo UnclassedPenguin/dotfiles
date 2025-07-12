@@ -1,0 +1,48 @@
+(deflisten workspace "scripts/workspaces")
+
+(defwidget bar []
+  (centerbox :orientation "h"
+    (workspaces)
+    time
+    (sidestuff)))
+
+(defwidget sidestuff []
+  (box :class "sidestuff" :orientation "h" :space-evenly true :halign "end"
+    date
+    (battery)))
+
+(defwidget workspaces []
+  (literal :content workspace))
+
+(defwidget battery []
+  (box :class "battery"
+       :orientation "h"
+       :space-evenly false
+       :halign "start"
+       :spacing 2
+       bat
+       batstatus))
+
+(defpoll batstatus :interval "10s"
+  "scripts/getbatstatus")
+
+(defpoll bat :interval "10s"
+  "scripts/getbat")
+
+(defpoll time :interval "10s"
+  "date '+%H:%M'")
+
+(defpoll date :interval "10s"
+  "date '+%y/%m/%d'")
+
+(defwindow bar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "95%"
+                      :height "5px"
+                      :anchor "top center")
+  :exclusive "true"
+  :reserve (struts :side "top" :distance "4%")
+  (bar))

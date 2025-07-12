@@ -1,0 +1,47 @@
+* {
+  all: unset; // Unsets everything so you can style everything from scratch
+}
+
+// Global Styles
+.bar {
+  //background-color: #3a3a3a;
+  //background-color: rgba(#000, 0.5);￼
+  color: #b0b4bc;
+  padding: 0px;
+  font-size: small;
+}
+
+// Styles on classes (see eww.yuck for more information)
+
+.battery {
+  padding-left: 10px;
+}
+
+.workspaces button:hover {
+  color: #D35D6E;
+}
+
+// Unoccupied workspace
+.ws100, .ws200, .ws300,
+.ws400, .ws500, .ws600,
+.ws700, .ws800, .ws900 {
+  //color: grey;
+  color: #708090;
+}
+
+// Occupied workspace
+.ws110, .ws210, .ws310,
+.ws410, .ws510, .ws610,
+.ws710, .ws810, .ws910 {
+  //color: white;
+  color: #faebd7;
+}
+
+// Focused workspace
+.ws111, .ws211, .ws311,
+.ws411, .ws511, .ws611,
+.ws711, .ws811, .ws911 {
+  //color: #FF8C00;
+  //color: #CC5500;
+  color: grey;
+}
