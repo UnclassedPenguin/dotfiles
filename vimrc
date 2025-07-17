@@ -47,6 +47,33 @@ set formatoptions+=l
 set splitbelow                  " Split screen to bottom
 set splitright                  " Split screen to right
 
+
+"----------vimdiff Colors--------------"
+
+" Diff styling
+hi DiffAdd      ctermfg=234 ctermbg=108  cterm=bold
+hi DiffChange   ctermfg=235 ctermbg=104  cterm=none
+hi DiffDelete   ctermfg=131 ctermbg=NONE  cterm=none
+hi DiffText     ctermfg=235 ctermbg=144  cterm=bold
+hi Folded       ctermfg=253 ctermbg=238 cterm=none
+
+" Supporting UI
+hi LineNr       ctermfg=241 ctermbg=NONE
+hi CursorLineNr ctermfg=223 ctermbg=NONE cterm=bold
+hi MatchParen   ctermfg=235 ctermbg=181  cterm=bold
+hi Comment      ctermfg=245 ctermbg=NONE cterm=italic
+hi Identifier   ctermfg=110 ctermbg=NONE
+hi Constant     ctermfg=180 ctermbg=NONE
+hi Statement    ctermfg=138 ctermbg=NONE cterm=bold
+
+
+" Fold/sign columns (barely visible, minimal distraction)
+hi FoldColumn   ctermfg=121 ctermbg=NONE
+hi SignColumn   ctermfg=244 ctermbg=NONE
+
+"------end vimdiff Colors--------------"
+
+
 "--------------------------------------"
 "----------ENDGENERAL------------------"
 "--------------------------------------"
