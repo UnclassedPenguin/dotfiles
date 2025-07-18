@@ -19,4 +19,3 @@ Make sure after you run this command to execute vim, and then run `:PlugInstall`
 
 #### Todo:
 - Fix install script. 
-- Add an alias.zsh to zsh folder for ~/oh-my-zsh/custom/ because I always end up creating that and putting same stuff in it...
