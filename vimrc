@@ -31,10 +31,10 @@ set incsearch                   " Searches for strings incrementally
 set autoindent                  " Auto-indent new lines
 set smartindent	                " Enable smart-indent
 set expandtab                   " Use spaces instead of tabs
-set shiftwidth=2                " Number of auto-indent spaces
+set shiftwidth=4                " Number of auto-indent spaces
 set smarttab                    " Enable smart-tabs
-set softtabstop=2               " Number of spaces per Tab
-set tabstop=2               " Number of spaces per Tab
+set softtabstop=4               " Number of spaces per Tab
+set tabstop=4                   " Number of spaces per Tab
 set noerrorbells                " Turn off error bells
 set ruler                       " Show row and column ruler information
 set undolevels=1000             " Number of undo levels
@@ -75,7 +75,7 @@ hi SignColumn   ctermfg=244 ctermbg=NONE
 
 
 "--------------------------------------"
-"----------ENDGENERAL------------------"
+"----------END GENERAL-----------------"
 "--------------------------------------"
 
 
@@ -95,7 +95,7 @@ if has("autocmd")
 endif
 
 "--------------------------------------"
-"----------ENDADVANCED-----------------"
+"----------END ADVANCED----------------"
 "--------------------------------------"
 
 
@@ -202,7 +202,7 @@ map <leader>fc zc
 map <leader>fm zM
 
 "--------------------------------------"
-"--------ENDKEYBINDINGS----------------"
+"--------END KEYBINDINGS---------------"
 "--------------------------------------"
 
 
@@ -246,7 +246,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'instant-markdown/vim-instant-markdown'
 
 " Match html tags
-Plug 'Valloric/matchtagalways'
+" Plug 'Valloric/matchtagalways'
 
 " Todo plugin
 Plug 'laib3/vim-todo-plugin'
@@ -261,7 +261,7 @@ Plug 'triglav/vim-visual-increment'
 call plug#end()
 
 "--------------------------------------"
-"--------ENDPLUGINS--------------------"
+"--------END PLUGINS-------------------"
 "--------------------------------------"
 
 
@@ -279,7 +279,7 @@ endfu
 com! WP call WordProcessorMode()
 
 "--------------------------------------"
-"--------ENDFUNCTIONS------------------"
+"--------END FUNCTIONS-----------------"
 "--------------------------------------"
 
 
