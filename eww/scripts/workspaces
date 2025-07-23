@@ -1,14 +1,14 @@
 #!/bin/bash
 
+# get the active workspace. Returns just the number
+active_workspace=$(hyprctl activeworkspace | grep "workspace" | awk '{print $3}')
+
 workspaces() {
-    # get the active workspace. Returns just the number
-    active_workspace=$(hyprctl activeworkspace | grep "workspace" | awk '{print $3}')
 
     # these have 10, just so I can ignore the 1st one and do 1 through 9
     w=(0 0 0 0 0 0 0 0 0 0)
     f=(0 0 0 0 0 0 0 0 0 0)
     s=(0 "○" "○" "○" "○" "○" "○" "○" "○" "○") 
-
 
     # Loop through workspaces 1 to 9 and check if they are occupied or empty
     for i in {1..9}; do
