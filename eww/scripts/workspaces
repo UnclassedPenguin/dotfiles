@@ -33,6 +33,9 @@ workspaces() {
     echo 	"(box   :class \"workspaces\"	:orientation \"h\" :spacing 7 :space-evenly \"true\" :halign \"start\" (button :onclick \"hyprctl dispatch workspace 1\" :class  \"ws1${w[1]}${f[1]}\"   \"${s[1]}\") (button :onclick \"hyprctl dispatch workspace 2\"	:class	\"ws2${w[2]}${f[2]}\"   \"${s[2]}\") (button :onclick \"hyprctl dispatch workspace 3\"	:class	\"ws3${w[3]}${f[3]}\"	\"${s[3]}\") (button :onclick \"hyprctl dispatch workspace 4\"	:class	\"ws4${w[4]}${f[4]}\"	\"${s[4]}\") (button :onclick \"hyprctl dispatch workspace 5\"	:class	\"ws5${w[5]}${f[5]}\"	\"${s[5]}\") (button :onclick \"hyprctl dispatch workspace 6\"	:class	\"ws6${w[6]}${f[6]}\"	\"${s[6]}\") (button :onclick \"hyprctl dispatch workspace 7\"	:class	\"ws7${w[7]}${f[7]}\"	\"${s[7]}\") (button :onclick \"hyprctl dispatch workspace 8\"	:class	\"ws8${w[8]}${f[8]}\"	\"${s[8]}\") (button :onclick \"hyprctl dispatch workspace 9\"	:class	\"ws9${w[9]}${f[9]}\"	\"${s[9]}\"))" 
 }
 
+# Call it initially
+workspaces
+
 while true; do
 
     new_workspace=$(hyprctl activeworkspace | grep "workspace" | awk '{print $3}')
