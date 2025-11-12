@@ -1,12 +1,6 @@
 # dotfiles
 My dotfiles
 
-#### Install oh my zsh:
-[oh-my-zsh link](https://ohmyz.sh/)
-```sh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-
 #### Install juneplugg vim-plug
 [vim-plug link](https://github.com/junegunn/vim-plug)
 ```sh
