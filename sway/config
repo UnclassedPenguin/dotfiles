@@ -19,6 +19,13 @@ input * {
     xkb_options "ctrl:nocaps,ctrl:swapcaps" 
 }
 
+# change window scaling
+#output eDP-1 scale 1.15
+
+# add gaps
+#gaps outer 5
+#gaps inner 5
+
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -145,7 +152,7 @@ bindsym $mod+r mode "resize"
 # status bar
 bar {
     position top
-    font pango:Noto Mono 8 
+    font pango:Noto Mono 8
     colors {
         background #1d1f21
         statusline #ffffff 
