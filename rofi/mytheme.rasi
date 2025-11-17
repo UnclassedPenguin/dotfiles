@@ -14,10 +14,10 @@
 window {
     //y-offset: -70px;
     padding:          5px;
-    background-color: rgba ( 29, 31, 33, 100 % );
+    background-color: rgba ( 29, 31, 33, 70 % );
     border-color:     white;
-    border:           1;
-    border-radius:    4;
+    border:           1px;
+    border-radius:    4px;
 }
 
 element {
@@ -26,7 +26,7 @@ element {
 
 element-text {
     text-color:       inherit;
-    border:           0;
+    border:           0px;
     padding:          1px 1px 1px 5px;
 }
 
@@ -38,7 +38,7 @@ element normal.normal {
 element selected.normal {
     border-color:     white;
     text-color:       var(selected-normal-foreground);
-    border: 1px;
+    border:           1px;
 }
 
 element alternate.normal {
