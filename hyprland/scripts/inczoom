@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Get current zoom factor
+current=$(hyprctl getoption cursor:zoom_factor | awk '/float:/ {print $2}')
+
+# Increase by 0.5
+new=$(awk -v v="$current" 'BEGIN{print v + 0.5}')
+
+# Apply
+hyprctl keyword cursor:zoom_factor "$new"
+
