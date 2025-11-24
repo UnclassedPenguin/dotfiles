@@ -1,0 +1,88 @@
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+#
+# Tyler(UnclassedPenguin) .zshrc 2022
+#
+# Author: Tyler(UnclassedPenguin)
+#    URL: https://unclassed.ca
+# GitHub: https://github.com/unclassedpenguin
+#
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+
+# Prompt git info
+autoload -Uz vcs_info
+zstyle ':vcs_info:git:*' formats '(%b%c%u%m)'
+zstyle ':vcs_info:git:*' actionformats '(%b%c%u%m|%a)'
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr '+'
+zstyle ':vcs_info:git:*' unstagedstr '!'
+zstyle ':vcs_info:git:*' formats '(%b%c%u%m)'
+zstyle ':vcs_info:git:*' actionformats '(%b%c%u%m|%a)'
+
+# Shell prompt for root
+precmd() {
+  vcs_info
+  print -P '%F{9}%n@%m %~%f %F{141}${vcs_info_msg_0_}%f'
+}
+setopt PROMPT_SUBST
+PROMPT='%F{9}#%f '
+
+# Tab autocomplete case insensitive
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
+
+
+# History settings
+#-------------------------------------------------------------------------------
+# Set the path to the history file
+HISTFILE=~/.zsh_history
+
+# Set the number of commands to save in the history file
+HISTSIZE=10000
+
+# Set the number of commands to save in the history file when the shell exits
+SAVEHIST=10000
+
+# Ignore duplicate commands
+setopt HIST_IGNORE_DUPS
+
+# Ignore commands that start with a space
+setopt HIST_IGNORE_SPACE
+
+# Do not display a command in the history search that is already in the current history
+setopt HIST_FIND_NO_DUPS
+
+# Remove superfluous blanks from each command before saving it in the history list
+setopt HIST_REDUCE_BLANKS
+
+# Expire duplicate entries first when trimming history
+setopt HIST_EXPIRE_DUPS_FIRST
+
+# Do not execute immediately upon history expansion
+setopt HIST_VERIFY
+
+# Append to the history file, don't overwrite it
+setopt INC_APPEND_HISTORY
+
+# Share history between multiple sessions
+setopt SHARE_HISTORY
+
+# Save timestamps with each command in the history
+setopt EXTENDED_HISTORY
+
+
+# Aliases
+#-------------------------------------------------------------------------------
+alias ls="ls --color=auto"
+alias x="exit"
+alias q="exit"
+alias h="exit"
+
+alias fv="fzf --height 40% --layout reverse --border --bind 'enter:become(vim {})'"
+
+alias screen="screen -T screen-256color"
+
+# ls when you cd
+# pwdandls is a command in ~/.bin
+chpwd() pwdandls
