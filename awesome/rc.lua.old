@@ -210,10 +210,7 @@ local squares_sel_option        = themes[theme_index][5]
 local function toggle_scratchpad()
   local scratchpad_terminal = nil
   for _, client in pairs(client.get()) do
-    -- this following line changes it to use urxvt. Would need to comment out the next line to stop it form using kitty. 
-    -- would also need to go down and uncomment the scratchpad rules for urxvt scratchpad in the window rules area.
-    --if client.class == "URxvt" and client.instance == "scratchpad" then
-    if client.class == "scratchpad" and client.instance == "scratchpad" then
+    if client.class == "URxvt" and client.instance == "scratchpad" then
       scratchpad_terminal = client
       break
     end
@@ -231,9 +228,7 @@ local function toggle_scratchpad()
   else
     -- If terminal doesn't exist, create it
     -- This is also where you can change the default size, just change geometry
-    -- Uncomment this line and comment out next line to use urxvt instead of kitty
-    --awful.spawn("urxvt -name scratchpad -geometry 120x35", false)
-    awful.spawn("kitty --class scratchpad", false)
+    awful.spawn("urxvt -name scratchpad -geometry 100x35", false)
   end
 end
 
@@ -266,8 +261,7 @@ end
 
 
 -- This is used later as the default terminal and editor to run.
---terminal = "urxvt"
-terminal = "kitty"
+terminal = "urxvt"
 terminal2 = "gnome-terminal"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
@@ -372,14 +366,7 @@ myawesomemenu = {
    { "quit", function() awesome.quit() end },
 }
 
-programmenu = {
-    { "browser", "brave-browser-stable"},
-    { "gimp", "gimp"},
-}
-
---mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, },
-                                    { "programs", programmenu, },
+mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "terminal", terminal },
                                   }
                         })
@@ -484,7 +471,7 @@ awful.screen.connect_for_each_screen(function(s)
           squares_sel_empty = squares_sel_empty_option,
           squares_unsel = squares_unsel_option,
           --squares_unsel_empty = homedir .. "Pictures/awesome-assets/purplemenu-19x19.png",
-          shape = function(cr) gears.shape.parallelogram(cr,14,19) end
+          shape = function(cr) gears.shape.parallelogram(cr,10,14) end
         },
     }
 
@@ -526,7 +513,7 @@ awful.screen.connect_for_each_screen(function(s)
     s.mywibox = awful.wibar({ 
       position = "top", 
       screen = s,
-      height = 20,
+      height = 15,
       border_width = 8,
       border_color = "#1d1f21",
       width = s.geometry.width-30,
@@ -566,21 +553,13 @@ root.buttons(gears.table.join(
 globalkeys = gears.table.join(
 
     -- Volume Control
-    --awful.key({ }, "XF86AudioRaiseVolume", function ()
-              --awful.util.spawn("amixer set Master 5%+") end),
-    --awful.key({ }, "XF86AudioLowerVolume", function ()
-              --awful.util.spawn("amixer set Master 5%-") end),
-    --awful.key({ }, "XF86AudioMute", function ()
-              --awful.util.spawn("amixer sset Master toggle") end),
-
-    -- Volume Control
+    -- You may need to use "amixer set Master toggle" for mute on some systems
     awful.key({ }, "XF86AudioRaiseVolume", function ()
-              awful.util.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") end),
+              awful.util.spawn("amixer set Master 5%+") end),
     awful.key({ }, "XF86AudioLowerVolume", function ()
-              awful.util.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") end),
+              awful.util.spawn("amixer set Master 5%-") end),
     awful.key({ }, "XF86AudioMute", function ()
-              awful.util.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") end),
-
+              awful.util.spawn("pactl set-sink-mute 0 toggle") end),
 
     -- Brightness Control
     awful.key({ }, "XF86MonBrightnessUp", function ()
@@ -597,7 +576,7 @@ globalkeys = gears.table.join(
               {description = "toggle scratchpad", group = "custom" }),
 
     -- Prompt
-    awful.key({ modkey },            "d",     function () awful.spawn("rofi -show drun -font 'mono 14' -theme-str 'window{border-color: " 
+    awful.key({ modkey },            "d",     function () awful.spawn("rofi -show drun -font 'mono 10' -theme-str 'window{border-color: " 
       .. rofi_border_color .. ";} element selected.normal{border-color: " .. rofi_border_color .. ";}'") end,
               {description = "Run rofi, a launcher for applications",  group = "launcher"}),
 
@@ -655,7 +634,7 @@ globalkeys = gears.table.join(
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
-              {description = "open a terminal", group = "launcher"}),
+              {description = "open a urxvt terminal", group = "launcher"}),
 
     awful.key({ modkey, "Shift"   }, "t", function () awful.spawn(terminal2) end,
               {description = "open a gnome terminal", group = "launcher"}),
@@ -827,24 +806,8 @@ root.keys(globalkeys)
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
 
-    -- I don't use this anymore, since kitty works...
     -- Scratchpad rule
-    --{ rule = { class = "URxvt", instance = "scratchpad" },
-      --properties = {
-        --ontop = true,
-        --sticky = true,
-        --skip_taskbar = true,
-        --focus = true,
-        --floating = true,
-        --titlebars_enabled = false,
-      --},
-      --callback = function(c)
-        --awful.placement.centered(c, { honor_workarea=true, honor_padding=true })
-      --end,
-    --},
-
-    -- Kitty scratchpad rules
-     { rule = { class = "scratchpad", instance = "scratchpad" },
+    { rule = { class = "URxvt", instance = "scratchpad" },
       properties = {
         ontop = true,
         sticky = true,
@@ -852,10 +815,8 @@ awful.rules.rules = {
         focus = true,
         floating = true,
         titlebars_enabled = false,
-        opacity = 0.90,
       },
       callback = function(c)
-        c:geometry({ width = 1300, height = 800 })
         awful.placement.centered(c, { honor_workarea=true, honor_padding=true })
       end,
     },
@@ -920,7 +881,7 @@ awful.rules.rules = {
 client.connect_signal("manage", function (c)
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
-     if not awesome.startup then awful.client.setslave(c) end
+    -- if not awesome.startup then awful.client.setslave(c) end
 
     if awesome.startup
       and not c.size_hints.user_position
