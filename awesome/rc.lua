@@ -203,7 +203,7 @@ local squares_sel_option        = themes[theme_index][5]
 
 
 --{{{ Scratchpad
--- This is for the scratchpad, that opens a urxvt window that can be brought forward and hidden into the background.
+-- This is for the scratchpad, that opens a --urxvt-- kitty window that can be brought forward and hidden into the background.
 -- There is a rule set further on, and a key binding set as well. Search "Scratchpad" to find them.
 
 -- Function to toggle the scratchpad
