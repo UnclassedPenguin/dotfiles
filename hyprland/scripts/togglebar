@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ $(pgrep eww) ]]; then
+    pkill eww
+else
+    eww open bar
+fi
