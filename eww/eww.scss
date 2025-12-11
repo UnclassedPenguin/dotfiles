@@ -21,6 +21,8 @@
   color: #D35D6E;
 }
 
+// These are kind of binary. So workspace1 0 0. both bits not set. If workspaces1 1 0 first bit set, means occupied. workspace1 1 1 means occupied and focused.
+
 // Unoccupied workspace
 .ws100, .ws200, .ws300,
 .ws400, .ws500, .ws600,
