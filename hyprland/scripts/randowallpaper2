@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+
+WALLPAPER_DIR="$HOME/data/Pictures/wallpapers"
+INTERVAL=300
+PIDFILE="$HOME/.cache/randowallpaper.pid"
+
+elapsed=0
+force_change=0
+
+# Single instance check
+if [[ -f "$PIDFILE" ]] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
+    exit 0
+fi
+
+echo $$ > "$PIDFILE"
+
+cleanup() {
+    rm -f "$PIDFILE"
+    exit 0
+}
+trap cleanup EXIT INT TERM
+
+# old way
+#change_wallpaper() {
+    #CURRENT_WALL=$(hyprctl hyprpaper listloaded | head -n 1)
+    #WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -path "$CURRENT_WALL" | shuf -n 1)
+    #[[ -n "$WALLPAPER" ]] && hyprctl hyprpaper reload ,"$WALLPAPER"
+#}
+
+change_wallpaper() {
+    WALLPAPER=$(find "$WALLPAPER_DIR" -type f | shuf -n 1)
+
+    if [[ -n "$WALLPAPER" ]]; then
+        hyprctl hyprpaper preload "$WALLPAPER"
+        hyprctl hyprpaper wallpaper eDP-1,"$WALLPAPER"
+    fi
+}
+
+# Signal handler: instant change + reset timer
+force_next() {
+    force_change=1
+}
+trap force_next USR1
+
+print_info() {
+    force_info=1
+}
+trap print_info USR2
+
+# Initial wallpaper
+change_wallpaper
+
+while true; do
+    sleep 1
+    ((elapsed++))
+
+    if (( force_change )); then
+        change_wallpaper
+        elapsed=0
+        force_change=0
+        continue
+    fi
+
+    if (( force_info )); then
+        $(hyprctl notify 1 10000 0 "fontsize:20 elapsed:$elapsed")
+        force_info=0
+        continue
+    fi
+
+    if (( elapsed >= INTERVAL )); then
+        change_wallpaper
+        elapsed=0
+    fi
+done
