@@ -32,8 +32,7 @@ $menu = rofi -show drun -font 'mono 11'
 
 # hyprpaper is the program that sets the background. randowallpaper (sic) is a script 
 # that is in ~/.bin that picks a random wallpaper from ~/Pictures/backgrounds
-#exec-once = eww daemon & eww open bar & hyprpaper & sleep 1 && randowallpaper
-exec-once = hyprpaper & sleep 1 && randowallpaper2
+exec-once = eww daemon & eww open bar & hyprpaper & sleep 1 && randowallpaper
 
 
 #-------------------------------------------------------------------------------
@@ -89,10 +88,7 @@ general {
     # Grey
     #col.active_border = rgba(6d887fff) rgba(3d5251ff) 90deg
     # Purple
-    #ol.active_border = rgba(704ec0ff) rgba(3d5251ff) 55deg
-    # White
-    #col.active_border = rgba(ccccccff) rgba(3d5251ff) 55deg
-    col.active_border = rgba(ccccccff) rgba(333333ff) 55deg
+    col.active_border = rgba(704ec0ff) rgba(3d5251ff) 55deg
     col.inactive_border = rgba(595959aa)
 
     # Set to true enable resizing windows by clicking and dragging on borders and gaps
@@ -191,15 +187,12 @@ input {
     #follow_mouse = 1
     follow_mouse = 2
 
-    # -1.0 - 1.0, 0 means no modification.
-    #sensitivity = -0.75 
-    sensitivity = 0
-
-    scroll_factor = 1.0
+    sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+    scroll_factor = 3.0
 
     touchpad {
         natural_scroll = false
-        scroll_factor = 1.0
+        scroll_factor = 4.0
     }
 }
 
@@ -216,8 +209,8 @@ device {
 #-------------------------------------------------------------------------------
 
 # https://wiki.hyprland.org/Configuring/Variables/#gestures
-gesture = 3, horizontal, workspace
 gestures {
+    workspace_swipe = on
     workspace_swipe_distance = 200
     workspace_swipe_create_new = false
     workspace_swipe_forever = true
@@ -240,9 +233,7 @@ bind = $mainMod, Print, exec, grim -g "$(slurp)" "/home/tyler/Pictures/screensho
 bind = SHIFT, Print, exec, hyprctl notify 1 20000 0 "fontsize:20 $(grim -g "$(slurp -p -b 00000000)" -t ppm - | magick - -format '%[pixel:p{0,0}]' txt:- | awk 'NR==2')"
 
 # Wallpapers
-#bind = $mainMod, B, exec, randowallpaper
-# This sends a signal to the randowallpaper2 script, to change the wallpaper
-bind = $mainMod, B, exec, kill -USR1 $(cat ~/.cache/randowallpaper.pid)
+bind = $mainMod, B, exec, randowallpaper
 bind = $mainMod SHIFT, B, exec, hyprctl hyprpaper reload ,"/home/tyler/data/Pictures/wallpapers/V9v80sg.jpeg"
 
 # General
@@ -355,40 +346,18 @@ bindl = , XF86AudioPrev, exec, playerctl previous
 # See https://wiki.hyprland.org/Configuring/Workspace-Rules/ for workspace rules
 
 # Ignore maximize requests from apps. You'll probably like this.
-#windowrule = suppressevent maximize, class:.*
-windowrule {
-    name = suppress-maximize-events
-    match:class = .*
-    suppress_event = maximize
-}
+windowrule = suppressevent maximize, class:.*
 
 # Fix some dragging issues with XWayland
-#windowrule = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
-windowrule {
-    name = fix-xwayland-dragging
-    match:class = ^$
-    match:title = ^$
-    match:xwayland = true
-    float = on
-    fullscreen = on
-    pin = off
-}
+windowrule = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
 
 # Launch kitty on empty magic workspace 
 workspace = special:magic, on-created-empty:[float] kitty
-#windowrule = float,class:^(kitty)$,title:^(kitty)$, onworkspace:magic
-windowrule {
-    name = kitty-magic-workspace
-    match:class = ^(kitty)$
-    match:title = ^(kitty)$
-    match:workspace = magic
-    center = on
-    animation = popin
-}
-windowrule = size 1100 675, match:class ^(kitty)$
+windowrule = float,class:^(kitty)$,title:^(kitty)$, onworkspace:magic
+windowrulev2 = size 1100 675, class:kitty
 
 # Don't let mpv go transparent
-windowrule = opacity 1.0 override 1.0 override 1.0, match:class ^(mpv)$,
+windowrule = opacity 1.0 override 1.0 override 1.0, class:mpv
 
 # Ref https://wiki.hyprland.org/Configuring/Workspace-Rules/
 # "Smart gaps" / "No gaps when only"
