@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if pgrep eww > /dev/null; then
+    /usr/bin/pkill eww
+else
+    /home/tyler/.bin/eww open bar
+fi

@@ -2,7 +2,7 @@
 
 WALLPAPER_DIR="$HOME/data/Pictures/wallpapers"
 INTERVAL=300
-PIDFILE="$HOME/.cache/randowallpaper.pid"
+PIDFILE="$HOME/.cache/hypr-random-wallpaper.pid"
 
 elapsed=0
 force_change=0

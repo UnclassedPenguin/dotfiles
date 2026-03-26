@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+WALLPAPER_DIR="$HOME/data/Pictures/wallpapers"
+INTERVAL=300
+PIDFILE="$HOME/.cache/niri-random-wallpaper.pid"
+
+elapsed=0
+force_change=0
+
+# Single instance check
+if [[ -f "$PIDFILE" ]] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
+    exit 0
+fi
+
+echo $$ > "$PIDFILE"
+
+cleanup() {
+    rm -f "$PIDFILE"
+    exit 0
+}
+trap cleanup EXIT INT TERM
+
+change_wallpaper() {
+    pkill swaybg 2>/dev/null
+
+    WALLPAPER=$(find "$WALLPAPER_DIR" -type f | shuf -n 1)
+
+    if [[ -n "$WALLPAPER" ]]; then
+        swaybg -m fill -i "$WALLPAPER" &
+    fi
+}
+
+# Signal handler: instant change + reset timer
+force_next() {
+    force_change=1
+}
+trap force_next USR1
+
+# Initial wallpaper
+change_wallpaper
+
+while true; do
+    sleep 1
+    ((elapsed++))
+
+    if (( force_change )); then
+        change_wallpaper
+        elapsed=0
+        force_change=0
+        continue
+    fi
+
+    if (( elapsed >= INTERVAL )); then
+        change_wallpaper
+        elapsed=0
+    fi
+done
