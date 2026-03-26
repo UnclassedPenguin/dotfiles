@@ -10,15 +10,14 @@ else
 fi
 
 # Toggle eww
-if pgrep eww >/dev/null; then
-    $HOME/.bin/eww close-all 
+if pgrep eww > /dev/null; then
+    pkill eww
 else
     if [[ "$WM" == "hypr" ]]; then
         $HOME/.bin/eww open hypr-bar
     elif [[ "$WM" == "niri" ]]; then
         $HOME/.bin/eww open niri-bar
     else
-        echo "Unknown WM, defaulting..."
-        $HOME/.bin/eww open bar
+        echo "nothing to do"
     fi
 fi
