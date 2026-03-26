@@ -5,3 +5,31 @@ if pgrep eww > /dev/null; then
 else
     /home/tyler/.bin/eww open bar
 fi
+
+
+
+
+#!/bin/bash
+
+# Detect WM
+if [[ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]]; then
+    WM="hypr"
+elif [[ -n "$NIRI_SOCKET" ]]; then
+    WM="niri"
+else
+    WM="unknown"
+fi
+
+# Toggle eww
+if pgrep eww >/dev/null; then
+    eww close-all 
+else
+    if [[ "$WM" == "hypr" ]]; then
+        eww open hypr-bar
+    elif [[ "$WM" == "niri" ]]; then
+        eww open niri-bar
+    else
+        echo "Unknown WM, defaulting..."
+        eww open bar
+    fi
+fi
