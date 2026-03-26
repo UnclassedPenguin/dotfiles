@@ -1,18 +1,70 @@
 (deflisten workspace "scripts/workspaces")
 
-(defwidget bar []
+;-------------------------------------------------------------------------------
+; hypr-bar
+;-------------------------------------------------------------------------------
+(defwindow hypr-bar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "95%"
+                      :height "5px"
+                      :anchor "top center")
+  :exclusive "true"
+  :reserve (struts :side "top" :distance "4%")
+  (hypr-bar))
+
+(defwidget hypr-bar []
   (centerbox :orientation "h"
     (workspaces)
     time
     (sidestuff)))
 
+(defwidget workspaces []
+  (literal :content workspace))
+
+
+;-------------------------------------------------------------------------------
+; niri-bar
+;-------------------------------------------------------------------------------
+(defwindow niri-bar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "95%"
+                      :height "5px"
+                      :anchor "top center")
+  :exclusive "true"
+  :reserve (struts :side "top" :distance "4%")
+  (niri-bar))
+
+(defwidget niri-bar []
+  (centerbox :orientation "h"
+    (box :halign "start" :hexpand true
+      (niri-left))
+    (box :halign :center
+      time)
+    (box :halign :end :hexpand true
+      (sidestuff))))
+
+; this does nothing...
+(defwidget niri-left []
+    (box :orientation "h"
+         :space-evenly false
+         :halign "start"
+         :spacing 2
+         (label :text "")))
+
+
+;-------------------------------------------------------------------------------
+; Common functions
+;-------------------------------------------------------------------------------
 (defwidget sidestuff []
   (box :class "sidestuff" :orientation "h" :space-evenly true :halign "end"
     date
     (battery)))
-
-(defwidget workspaces []
-  (literal :content workspace))
 
 (defwidget battery []
   (box :class "battery"
@@ -35,14 +87,4 @@
 (defpoll date :interval "10s"
   "date '+%y/%m/%d'")
 
-(defwindow bar
-  :monitor 0
-  :windowtype "dock"
-  :geometry (geometry :x "0%"
-                      :y "0%"
-                      :width "95%"
-                      :height "5px"
-                      :anchor "top center")
-  :exclusive "true"
-  :reserve (struts :side "top" :distance "4%")
-  (bar))
+
