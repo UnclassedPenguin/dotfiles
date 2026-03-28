@@ -28,7 +28,9 @@ input {
 
 // Make the backdrop light.
 overview {
-    backdrop-color "#212529"
+    //backdrop-color "#212529"
+    //backdrop-color "#1d1f21"
+    backdrop-color "#101112"
 }
 
 //------------------------------------------------------------------------------
@@ -141,6 +143,7 @@ binds {
     Super+B hotkey-overlay-title="Toggles eww bar" { spawn "/home/tyler/.bin/togglebar"; }
     Mod+B hotkey-overlay-title="Change wallpaper" { spawn-sh "kill -USR1 $(cat ~/.cache/niri-random-wallpaper.pid)"; }
     Mod+D hotkey-overlay-title="Application launcher: rofi" { spawn-sh "rofi -show drun -font 'mono 11'"; }
+    Super+D hotkey-overlay-title="Application launcher: fuzzel" { spawn "fuzzel"; }
     Mod+A hotkey-overlay-title="Scratch Kitty Terminal" { spawn-sh "kitten quick-access-terminal"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
