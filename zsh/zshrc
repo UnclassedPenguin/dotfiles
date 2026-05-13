@@ -11,14 +11,13 @@
 #-------------------------------------------------------------------------------
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/.bin:$HOME/.gems/bin:$HOME/.gem/ruby/2.7.0:$PATH
-export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.bin:$HOME/.gems/bin:$HOME/.local/bin$PATH
 
 # Install Ruby Gems to ~/.gems
 export GEM_HOME="$HOME/.gems"
 
-export NPM_CONFIG_PREFIX=~/.npm-global
-export PATH=$PATH:~/.npm-global/bin
+#export NPM_CONFIG_PREFIX=~/.npm-global
+#export PATH=$PATH:~/.npm-global/bin
 
 # Variables for virtualenv
 #export WORKON_HOME=$HOME/.virtualenvs 
