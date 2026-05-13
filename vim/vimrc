@@ -61,7 +61,7 @@ hi Folded       ctermfg=253 ctermbg=238 cterm=none
 hi LineNr       ctermfg=241 ctermbg=NONE
 hi CursorLineNr ctermfg=223 ctermbg=NONE cterm=bold
 hi MatchParen   ctermfg=235 ctermbg=181  cterm=bold
-hi Comment      ctermfg=245 ctermbg=NONE cterm=italic
+hi Comment      ctermfg=245 ctermbg=NONE cterm=none
 hi Identifier   ctermfg=110 ctermbg=NONE
 hi Constant     ctermfg=180 ctermbg=NONE
 hi Statement    ctermfg=138 ctermbg=NONE cterm=bold
