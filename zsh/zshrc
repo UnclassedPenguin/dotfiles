@@ -145,6 +145,8 @@ alias gaa='git add --all'
 alias gcmsg='git commit --message'
 alias gp='git push'
 
+alias jekyllserve='bundle exec jekyll serve --livereload'
+
 # ls when you cd
 # pwdandls is a command in ~/.bin
 chpwd() pwdandls
